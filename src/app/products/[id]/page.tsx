@@ -19,8 +19,9 @@ async function getProduct(id: string) {
     }
 }
 
-export default async function ProductDetails({ params }: { params: { id: string } }) {
-    const product = await getProduct(params.id);
+export default async function ProductDetails({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    const product = await getProduct(id);
 
     if (!product) {
         // You could also return notFound() here

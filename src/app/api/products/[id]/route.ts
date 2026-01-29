@@ -4,10 +4,11 @@ import Product from '@/models/Product';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
-export async function GET(req: Request, { params }: { params: { id: string } }) {
+export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
         await dbConnect();
-        const product = await Product.findById(params.id);
+        const { id } = await params;
+        const product = await Product.findById(id);
 
         if (!product) {
             return NextResponse.json({ success: false, message: 'Product not found' }, { status: 404 });
@@ -19,7 +20,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
     }
 }
 
-export async function PUT(req: Request, { params }: { params: { id: string } }) {
+export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
         const session = await getServerSession(authOptions);
         if (!session) {
@@ -27,9 +28,10 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
         }
 
         await dbConnect();
+        const { id } = await params;
         const body = await req.json();
 
-        const product = await Product.findByIdAndUpdate(params.id, body, {
+        const product = await Product.findByIdAndUpdate(id, body, {
             new: true,
             runValidators: true,
         });
@@ -44,7 +46,7 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
     }
 }
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
         const session = await getServerSession(authOptions);
         if (!session) {
@@ -52,7 +54,8 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
         }
 
         await dbConnect();
-        const product = await Product.findByIdAndDelete(params.id);
+        const { id } = await params;
+        const product = await Product.findByIdAndDelete(id);
 
         if (!product) {
             return NextResponse.json({ success: false, message: 'Product not found' }, { status: 404 });
