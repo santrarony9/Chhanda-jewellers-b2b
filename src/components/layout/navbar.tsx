@@ -67,8 +67,8 @@ export function Navbar() {
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Button variant="default" className="rounded-full px-6">
-                        Partner Login
+                    <Button variant="default" className="rounded-full px-6" asChild>
+                        <Link href="/login">Partner Login</Link>
                     </Button>
                 </div>
             </nav>
@@ -111,7 +111,9 @@ export function Navbar() {
                             ))}
                         </div>
                         <div className="py-6">
-                            <Button className="w-full justify-center">Partner Login</Button>
+                            <Button className="w-full justify-center" asChild>
+                                <Link href="/login" onClick={() => setMobileMenuOpen(false)}>Partner Login</Link>
+                            </Button>
                         </div>
                     </div>
                 </div>
