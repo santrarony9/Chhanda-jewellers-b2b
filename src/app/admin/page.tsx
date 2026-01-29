@@ -52,6 +52,9 @@ export default async function AdminDashboard() {
                     <Button variant="outline" className="border-primary text-primary" asChild>
                         <a href="/admin/users">Manage Users</a>
                     </Button>
+                    <Button variant="outline" className="border-zinc-700 text-gray-300" asChild>
+                        <a href="/admin/settings">Site Config</a>
+                    </Button>
                     <Button variant="outline" asChild>
                         <a href="/api/auth/signout">Logout</a>
                     </Button>
