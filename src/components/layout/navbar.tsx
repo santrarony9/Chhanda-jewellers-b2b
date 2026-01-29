@@ -1,17 +1,49 @@
 "use client"
 
+import * as React from "react"
+import Link from "next/link"
 import Image from "next/image"
+import { Menu, X } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
-// ... (existing code)
+const navigation = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Manufacturing", href: "/manufacturing" },
+    { name: "B2B Services", href: "/b2b" },
+    { name: "Products", href: "/products" },
+    { name: "Contact", href: "/contact" },
+]
 
+export function Navbar() {
+    const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+    const [scrolled, setScrolled] = React.useState(false)
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20)
+        }
+        window.addEventListener("scroll", handleScroll)
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
+    return (
+        <header
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${scrolled
+                ? "bg-black/70 backdrop-blur-md border-white/5 py-3"
+                : "bg-transparent border-transparent py-6"
+                }`}
+        >
+            <nav className="container mx-auto px-4 h-20 flex items-center justify-between" aria-label="Global">
                 <div className="flex lg:flex-1">
                     <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
                         <span className="sr-only">Chhanda Jewellers</span>
                         {/* Company Logo */}
                         <div className="relative h-12 w-12">
-                            <Image 
-                                src="/logo.png" 
-                                alt="Chhanda Jewellers Logo" 
+                            <Image
+                                src="/logo.png"
+                                alt="Chhanda Jewellers Logo"
                                 fill
                                 className="object-contain"
                                 sizes="(max-width: 768px) 48px, 48px"
@@ -49,19 +81,23 @@ import Image from "next/image"
                         <Link href="/login">Partner Login</Link>
                     </Button>
                 </div>
-            </nav >
+            </nav>
 
-    {/* Mobile menu */ }
-    < div className = {
-        cn(
+            {/* Mobile menu */}
+            <div className={cn(
                 "lg:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-xl transition-transform duration-300 ease-in-out",
-            mobileMenuOpen? "translate-x-0" : "translate-x-full"
-        )
-    } >
+                mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            )}>
                 <div className="flex items-center justify-between px-4 h-20 border-b border-surface-light">
                     <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-                        <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-black font-bold font-serif border border-primary/50">
-                            C
+                        <div className="relative h-10 w-10">
+                            <Image
+                                src="/logo.png"
+                                alt="Chhanda Jewellers Logo"
+                                fill
+                                className="object-contain"
+                                sizes="40px"
+                            />
                         </div>
                         <span className="font-serif text-lg font-bold tracking-wide text-primary">
                             CHHANDA
@@ -97,7 +133,7 @@ import Image from "next/image"
                         </div>
                     </div>
                 </div>
-            </div >
-        </header >
+            </div>
+        </header>
     )
 }
