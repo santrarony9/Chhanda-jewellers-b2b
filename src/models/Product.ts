@@ -12,8 +12,12 @@ const ProductSchema = new Schema({
     },
     category: {
         type: String,
-        required: [true, 'Please specify a category (e.g., Necklace, Bangle)'],
-        index: true,
+        required: true,
+        enum: ['Bangles', 'Necklaces', 'Earrings', 'Rings', 'Pendants', 'Sets', 'Mangalsutra', 'Chains', 'Bracelets', 'Diamond'],
+    },
+    variety: {
+        type: String, // e.g. "Solitaire", "Studs", "Choker" - primarily for Diamond category but flexible
+        required: false,
     },
     material: {
         type: String, // e.g., 'Gold 22K', 'Diamond', 'Platinum'
