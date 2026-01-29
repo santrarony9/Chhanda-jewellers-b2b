@@ -5,6 +5,8 @@ import { ProductGrid } from "@/components/products/product-grid"
 import { FeaturedCollection } from "@/components/products/featured-collection"
 
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
     title: "Product Catalog | Chhanda Jewellers - B2B Collection",
     description: "Browse our exclusive collection of Gold and Diamond jewellery tailored for retail partners. Bulk enquiry available.",
@@ -25,7 +27,7 @@ export default function ProductsPage() {
 
             <FeaturedCollection />
 
-            <FeaturedCollection />
+
 
             <section className="py-12">
                 <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8">
