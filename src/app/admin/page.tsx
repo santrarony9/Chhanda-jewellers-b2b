@@ -46,6 +46,9 @@ export default async function AdminDashboard() {
                 <div className="flex items-center gap-4">
                     <span className="text-gray-400">Welcome, {session.user?.name}</span>
                     {/* Logout handling would typically comprise a client component or a form action */}
+                    <Button className="font-bold bg-primary text-black" asChild>
+                        <a href="/admin/products/new">Add Product</a>
+                    </Button>
                     <Button variant="outline" asChild>
                         <a href="/api/auth/signout">Logout</a>
                     </Button>
