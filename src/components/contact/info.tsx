@@ -1,70 +1,80 @@
-"use client"
+import { Mail, MapPin, Phone, MessageCircle, Clock, CheckCircle } from "lucide-react"
+import dbConnect from "@/lib/db"
+import SiteSettings from "@/models/SiteSettings"
 
-import { MapPin, Phone, Mail, Clock } from "lucide-react"
+async function getSettings() {
+    await dbConnect()
+    const settings = await SiteSettings.findOne()
+    return settings || {}
+}
 
-export function ContactInfo() {
+export async function ContactInfo() {
+    const settings = await getSettings()
+
     return (
-        <div className="space-y-8">
+        <div className="space-y-12">
             <div>
-                <h3 className="text-2xl font-serif text-white mb-6">Head Office & Factory</h3>
-                <p className="text-gray-400 leading-relaxed mb-8">
-                    Our state-of-the-art manufacturing unit is located in the heart of Singur, seamlessly connected to Kolkata via NH-19. We welcome our partners to visit our facility by appointment.
-                </p>
-
+                <h2 className="text-3xl font-serif text-white mb-6">Contact Information</h2>
                 <div className="space-y-6">
-                    <div className="flex gap-4">
-                        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                            <MapPin className="h-5 w-5" />
-                        </div>
-                        <div>
-                            <h4 className="text-white font-medium">Factory Address</h4>
-                            <p className="text-gray-400 text-sm">Vill & P.O - Singur, Dist - Hooghly,<br />West Bengal, India - 712409</p>
-                        </div>
-                    </div>
-
-                    <div className="flex gap-4">
-                        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                            <Phone className="h-5 w-5" />
-                        </div>
-                        <div>
-                            <h4 className="text-white font-medium">Phone Support</h4>
-                            <p className="text-gray-400 text-sm">+91 98765 43210 (Sales)</p>
-                            <p className="text-gray-400 text-sm">+91 98765 43211 (Office)</p>
-                        </div>
-                    </div>
-
-                    <div className="flex gap-4">
-                        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                            <Mail className="h-5 w-5" />
-                        </div>
-                        <div>
-                            <h4 className="text-white font-medium">Email Inquiries</h4>
-                            <p className="text-gray-400 text-sm">sales@chhandajewellers.com</p>
-                            <p className="text-gray-400 text-sm">support@chhandajewellers.com</p>
-                        </div>
-                    </div>
-
-                    <div className="flex gap-4">
-                        <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                            <Clock className="h-5 w-5" />
-                        </div>
-                        <div>
-                            <h4 className="text-white font-medium">Business Hours</h4>
-                            <p className="text-gray-400 text-sm">Mon - Sat: 10:00 AM - 7:00 PM</p>
-                            <p className="text-gray-400 text-sm">Sunday: Closed</p>
-                        </div>
-                    </div>
+                    <InfoCard
+                        icon={<MapPin className="h-6 w-6" />}
+                        title="Factory & Office"
+                        content={settings.address || 'Singur, Hooghly, West Bengal, India - 712409'}
+                        action="Get Directions"
+                        href="#"
+                    />
+                    <InfoCard
+                        icon={<Phone className="h-6 w-6" />}
+                        title="Phone"
+                        content={settings.phone || '+91 98765 43210'}
+                        action="Call Now"
+                        href={`tel:${settings.phone}`}
+                    />
+                    <InfoCard
+                        icon={<Mail className="h-6 w-6" />}
+                        title="Email"
+                        content={settings.email || 'contact@chhandajewellers.com'}
+                        action="Send Email"
+                        href={`mailto:${settings.email}`}
+                    />
                 </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="aspect-video w-full rounded-xl bg-surface-light overflow-hidden relative border border-surface-light">
-                <div className="absolute inset-0 flex items-center justify-center bg-surface-dark/50">
-                    <span className="text-gray-500 font-medium flex items-center gap-2">
-                        <MapPin className="h-5 w-5" /> Google Maps Embed
-                    </span>
-                </div>
+            <div className="bg-surface-dark border border-surface-light p-8 rounded-xl">
+                <h3 className="text-xl font-serif text-white mb-4">Why Partner With Us?</h3>
+                <ul className="space-y-3">
+                    <FeatureItem text="Direct Manufacturer Pricing" />
+                    <FeatureItem text="100% Hallmarked Inventory" />
+                    <FeatureItem text="Custom Design Support" />
+                    <FeatureItem text="Pan-India Secure Shipping" />
+                </ul>
             </div>
         </div>
+    )
+}
+
+function InfoCard({ icon, title, content, action, href }: any) {
+    return (
+        <div className="flex gap-4">
+            <div className="h-12 w-12 rounded-lg bg-surface-dark border border-surface-light flex items-center justify-center text-primary shrink-0">
+                {icon}
+            </div>
+            <div>
+                <h3 className="text-white font-medium mb-1">{title}</h3>
+                <p className="text-gray-400 mb-2 max-w-[250px]">{content}</p>
+                <a href={href} className="text-primary text-sm font-bold hover:text-accent transition-colors flex items-center gap-1">
+                    {action}
+                </a>
+            </div>
+        </div>
+    )
+}
+
+function FeatureItem({ text }: { text: string }) {
+    return (
+        <li className="flex items-center gap-3 text-gray-400">
+            <CheckCircle className="h-5 w-5 text-green-500 shrink-0" />
+            <span>{text}</span>
+        </li>
     )
 }

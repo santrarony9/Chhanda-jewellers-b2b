@@ -92,7 +92,7 @@ export function Navbar() {
                     <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                         <div className="relative h-10 w-10">
                             <Image
-                                src="/logo.png"
+                                src="/icon.png"
                                 alt="Chhanda Jewellers Logo"
                                 fill
                                 className="object-contain"
