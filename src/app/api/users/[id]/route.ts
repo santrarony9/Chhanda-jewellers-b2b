@@ -7,7 +7,7 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
     try {
         const session = await getServerSession(authOptions);
-        if (!session || session.user.role !== 'admin') {
+        if (!session || !session.user || session.user.role !== 'admin') {
             return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
         }
 
