@@ -5,42 +5,43 @@ import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
-{
-    title: "Gold Jewellery",
+const categories = [
+    {
+        title: "Gold Jewellery",
         subtitle: "22K & 18K Hallmarked",
-            href: "/products?cat=gold",
-                gradient: "from-[#D4AF37]/20 to-[#AA8C2C]/5", // Gold
-                    visual: "/featured-1.png",
-                        colSpan: "md:col-span-2",
-                            delay: 0
-},
-{
-    title: "Diamond Jewellery",
+        href: "/products?cat=gold",
+        gradient: "from-[#D4AF37]/20 to-[#AA8C2C]/5", // Gold
+        visual: "/featured-1.png",
+        colSpan: "md:col-span-2",
+        delay: 0
+    },
+    {
+        title: "Diamond Jewellery",
         subtitle: "VVS/VS Clarity Certified",
-            href: "/products?cat=diamond",
-                gradient: "from-blue-200/10 to-blue-400/5", // Diamond
-                    visual: null,
-                        colSpan: "md:col-span-1",
-                            delay: 0.1
-},
-{
-    title: "Bridal Collection",
+        href: "/products?cat=diamond",
+        gradient: "from-blue-200/10 to-blue-400/5", // Diamond
+        visual: null,
+        colSpan: "md:col-span-1",
+        delay: 0.1
+    },
+    {
+        title: "Bridal Collection",
         subtitle: "Wedding Sets",
-            href: "/products?cat=bridal",
-                gradient: "from-red-800/20 to-rose-900/10", // Deep Red/Rose
-                    visual: null,
-                        colSpan: "md:col-span-1",
-                            delay: 0.2
-},
-{
-    title: "Lightweight Daily Wear",
+        href: "/products?cat=bridal",
+        gradient: "from-red-800/20 to-rose-900/10", // Deep Red/Rose
+        visual: null,
+        colSpan: "md:col-span-1",
+        delay: 0.2
+    },
+    {
+        title: "Lightweight Daily Wear",
         subtitle: "Modern & Minimal",
-            href: "/products?cat=lightweight",
-                gradient: "from-zinc-700/30 to-zinc-900/30",
-                    visual: null,
-                        colSpan: "md:col-span-2",
-                            delay: 0.3
-}
+        href: "/products?cat=lightweight",
+        gradient: "from-zinc-700/30 to-zinc-900/30",
+        visual: null,
+        colSpan: "md:col-span-2",
+        delay: 0.3
+    }
 ]
 
 export function FeaturedCategories() {
