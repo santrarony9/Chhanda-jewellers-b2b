@@ -82,17 +82,18 @@ export function Hero() {
                         transition={{ duration: 1, delay: 0.2 }}
                         className="relative hidden lg:block h-[700px] w-full"
                     >
-                        {/* Abstract Gold Visual - Placeholder for a real tall jewelry shot */}
-                        <div className="absolute top-10 right-0 w-full h-full bg-gradient-to-br from-zinc-900 to-black border border-white/5 p-4 ">
-                            <div className="w-full h-full relative overflow-hidden bg-black group">
-                                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-black to-black opacity-60"></div>
-                                {/* Simulation of a jewelry image */}
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-[1px] border-primary/30 rotate-45 group-hover:rotate-90 transition-transform duration-[1.5s] ease-in-out"></div>
-                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-[1px] border-primary/50 rotate-45 group-hover:-rotate-0 transition-transform duration-[1.5s] ease-in-out delay-100"></div>
-
-                                <div className="absolute bottom-10 left-10 right-10 text-center">
-                                    <p className="text-primary font-serif italic text-2xl">"Craftsmanship that speaks."</p>
-                                </div>
+                        {/* Main Hero Visual */}
+                        <div className="absolute top-10 right-0 w-full h-full">
+                            <div className="relative w-full h-full">
+                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
+                                <Image
+                                    src="/hero-jewellery.png"
+                                    alt="Exquisite Gold Jewellery"
+                                    fill
+                                    className="object-contain drop-shadow-2xl"
+                                    sizes="(max-width: 1200px) 100vw, 50vw"
+                                    priority
+                                />
                             </div>
                         </div>
 
