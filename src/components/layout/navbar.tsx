@@ -1,46 +1,22 @@
 "use client"
 
-import * as React from "react"
-import Link from "next/link"
-import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import Image from "next/image"
 
-const navigation = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Manufacturing", href: "/manufacturing" },
-    { name: "B2B Services", href: "/b2b" },
-    { name: "Products", href: "/products" },
-    { name: "Contact", href: "/contact" },
-]
+// ... (existing code)
 
-export function Navbar() {
-    const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
-    const [scrolled, setScrolled] = React.useState(false)
-
-    React.useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20)
-        }
-        window.addEventListener("scroll", handleScroll)
-        return () => window.removeEventListener("scroll", handleScroll)
-    }, [])
-
-    return (
-        <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${scrolled
-                    ? "bg-black/70 backdrop-blur-md border-white/5 py-3"
-                    : "bg-transparent border-transparent py-6"
-                }`}
-        >
-            <nav className="container mx-auto px-4 h-20 flex items-center justify-between" aria-label="Global">
                 <div className="flex lg:flex-1">
                     <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
                         <span className="sr-only">Chhanda Jewellers</span>
-                        {/* Placeholder for Logo */}
-                        <div className="h-10 w-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-black font-bold font-serif text-xl border border-primary/50">
-                            C
+                        {/* Company Logo */}
+                        <div className="relative h-12 w-12">
+                            <Image 
+                                src="/logo.png" 
+                                alt="Chhanda Jewellers Logo" 
+                                fill
+                                className="object-contain"
+                                sizes="(max-width: 768px) 48px, 48px"
+                                priority
+                            />
                         </div>
                         <span className="font-serif text-xl font-bold tracking-wide text-primary">
                             CHHANDA <span className="text-foreground font-light">JEWELLERS</span>
@@ -73,13 +49,15 @@ export function Navbar() {
                         <Link href="/login">Partner Login</Link>
                     </Button>
                 </div>
-            </nav>
+            </nav >
 
-            {/* Mobile menu */}
-            <div className={cn(
+    {/* Mobile menu */ }
+    < div className = {
+        cn(
                 "lg:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-xl transition-transform duration-300 ease-in-out",
-                mobileMenuOpen ? "translate-x-0" : "translate-x-full"
-            )}>
+            mobileMenuOpen? "translate-x-0" : "translate-x-full"
+        )
+    } >
                 <div className="flex items-center justify-between px-4 h-20 border-b border-surface-light">
                     <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                         <div className="h-8 w-8 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-black font-bold font-serif border border-primary/50">
@@ -119,7 +97,7 @@ export function Navbar() {
                         </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </div >
+        </header >
     )
 }

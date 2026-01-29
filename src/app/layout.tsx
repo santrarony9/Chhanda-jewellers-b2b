@@ -9,6 +9,9 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 export const metadata: Metadata = {
   title: "Chhanda Jewellers | Gold & Diamond Jewellery Manufacturer",
   description: "Premier B2B Jewellery Manufacturer in Singur, West Bengal. Bulk supply, OEM, and custom designs.",
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 export default function RootLayout({
