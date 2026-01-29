@@ -44,6 +44,14 @@ const ProductSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    diamondClarity: {
+        type: String, // e.g. 'VVS', 'SI1' - specific to Diamond Jewellery
+        required: false,
+    },
+    certification: {
+        type: String, // e.g. 'IGI', 'GIA'
+        required: false,
+    },
     createdAt: {
         type: Date,
         default: Date.now,

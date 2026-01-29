@@ -202,6 +202,40 @@ export default function AddProductPage() {
                                 </Button>
                             </div>
 
+                            {/* Diamond Specific Fields */}
+                            {formData.category === 'Diamond Jewellery' && (
+                                <div className="grid grid-cols-2 gap-6 mt-6 p-4 border border-zinc-800 rounded-lg bg-zinc-900/50">
+                                    <div className="space-y-2">
+                                        <Label>Diamond Clarity</Label>
+                                        <select
+                                            name="diamondClarity"
+                                            value={(formData as any).diamondClarity || ""}
+                                            onChange={handleInputChange}
+                                            className="w-full h-10 rounded-md border border-zinc-700 bg-black px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-white"
+                                        >
+                                            <option value="">Select Clarity</option>
+                                            {["FL", "IF", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2", "I1", "I2", "I3"].map(c => (
+                                                <option key={c} value={c}>{c}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label>Certification</Label>
+                                        <select
+                                            name="certification"
+                                            value={(formData as any).certification || ""}
+                                            onChange={handleInputChange}
+                                            className="w-full h-10 rounded-md border border-zinc-700 bg-black px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-white"
+                                        >
+                                            <option value="">Select Certificate</option>
+                                            {["IGI", "GIA", "HRD", "SGL", "Bis Hallmark"].map(c => (
+                                                <option key={c} value={c}>{c}</option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
+                            )}
+
                             {formData.images.length > 0 && (
                                 <div className="flex flex-wrap gap-4 mt-4">
                                     {formData.images.map((url, i) => (
