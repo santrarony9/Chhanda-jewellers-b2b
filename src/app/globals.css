@@ -9,8 +9,11 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground tracking-wide;
-    /* Noise Texture Overlay */
+    /* Replaced @apply with standard CSS to fix build error */
+    background-color: #050505;
+    color: #FAFAFA;
+    letter-spacing: 0.025em;
+    /* tracking-wide */
     position: relative;
   }
 
@@ -51,7 +54,7 @@
   h4,
   h5,
   h6 {
-    @apply font-serif;
+    font-family: var(--font-playfair), serif;
   }
 }
 
@@ -61,10 +64,31 @@
   }
 
   .text-gold-gradient {
-    @apply bg-clip-text text-transparent bg-gold-text bg-[length:200%_auto] animate-shimmer;
+    /* Manual implementation of the gold gradient text style */
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #D4AF37, #F3E5AB, #D4AF37);
+    background-size: 200% auto;
+    animation: shimmer 3s infinite linear;
   }
 
   .glass-panel {
-    @apply bg-surface-dark backdrop-blur-md border border-surface-border box-border;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-sizing: border-box;
+  }
+}
+
+/* Explicit keyframes definition to avoid dependency on config */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
   }
 }
