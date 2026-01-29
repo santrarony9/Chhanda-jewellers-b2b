@@ -3,51 +3,87 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { CheckCircle2 } from "lucide-react"
+import { Check, MoveRight } from "lucide-react"
 
 export function ManufacturingHighlight() {
     return (
-        <section className="py-24 bg-surface-dark relative">
+        <section className="py-32 bg-surface-dark relative border-t border-white/5">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
-                    <div className="w-full lg:w-1/2 relative h-[500px]">
-                        {/* Abstract representation of factory/craftsmanship since no images yet */}
-                        <div className="absolute inset-0 bg-surface-light rounded-lg border border-surface-light overflow-hidden flex items-center justify-center">
-                            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
-                            <span className="text-surface-light/20 font-serif text-8xl font-black">MFG</span>
+                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+
+                    {/* Visual Side */}
+                    <div className="w-full lg:w-1/2 relative h-[600px] order-2 lg:order-1">
+                        <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden group">
+                            {/* Placeholder for Video/Image */}
+                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black to-transparent z-10" />
+                            <div className="h-full w-full bg-[url('/grid.svg')] opacity-5 scale-150" />
+
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-0">
+                                <span className="block text-9xl font-serif font-black text-white/5">EST</span>
+                                <span className="block text-9xl font-serif font-black text-white/5">1995</span>
+                            </div>
+
+                            <motion.div
+                                className="absolute bottom-10 left-10 z-20"
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                            >
+                                <div className="text-6xl font-serif font-bold text-white mb-2">25+</div>
+                                <div className="text-primary uppercase tracking-[0.3em] text-sm font-medium">Years of Mastery</div>
+                            </motion.div>
                         </div>
-                        {/* Floating Card */}
-                        <motion.div
-                            initial={{ x: -20, opacity: 0 }}
-                            whileInView={{ x: 0, opacity: 1 }}
-                            transition={{ delay: 0.3 }}
-                            viewport={{ once: true }}
-                            className="absolute -bottom-6 -right-6 lg:bottom-10 lg:-right-10 bg-black border border-primary/30 p-6 rounded-lg max-w-xs shadow-2xl"
-                        >
-                            <h4 className="text-primary font-bold text-3xl mb-1">25+</h4>
-                            <p className="text-gray-400 text-sm">Years of manufacturing excellence in Singur</p>
-                        </motion.div>
+
+                        {/* Decorative Frame */}
+                        <div className="absolute -inset-4 border border-primary/20 -z-10 translate-x-4 translate-y-4" />
                     </div>
 
-                    <div className="w-full lg:w-1/2">
-                        <h2 className="text-primary text-sm font-bold tracking-widest uppercase mb-2">Our Process</h2>
-                        <h3 className="text-3xl md:text-5xl font-serif text-white mb-6">From Design to Delivery</h3>
-                        <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                            We combine traditional karigari with modern casting technology to produce jewellery that meets international standards. Our manufacturing unit in Singur handles everything from CAD design to final polishing.
-                        </p>
+                    {/* Content Side */}
+                    <div className="w-full lg:w-1/2 order-1 lg:order-2">
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <h2 className="text-primary text-sm font-bold tracking-[0.2em] uppercase mb-4 flex items-center gap-4">
+                                <span className="h-[1px] w-8 bg-primary"></span>
+                                The Process
+                            </h2>
+                            <h3 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-tight text-balance">
+                                Precision Casting meets <br />
+                                <span className="text-gray-500 italic">Bengal's Artistry</span>
+                            </h3>
 
-                        <ul className="space-y-4 mb-10">
-                            {['Advanced CAD/CAM Design', 'Vacuum Casting Technology', 'Handcrafted Stone Setting', 'Precision Laser Soldering'].map((item, i) => (
-                                <li key={i} className="flex items-center gap-3 text-gray-200">
-                                    <CheckCircle2 className="h-5 w-5 text-primary" />
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
+                            <p className="text-gray-400 text-lg mb-10 leading-relaxed font-light">
+                                Our Singur facility is equipped with advanced Vacuum Casting technology and Laser Soldering units.
+                                Yet, we believe the soul of jewellery lies in the hands of the artisan. We combine automation with unmatched
+                                hand-finishing.
+                            </p>
 
-                        <Button size="lg" variant="default" asChild>
-                            <Link href="/manufacturing">See How We Make It</Link>
-                        </Button>
+                            <ul className="grid grid-cols-1 gap-6 mb-12">
+                                {[
+                                    { t: 'Advanced CAD/CAM Design', d: 'Perfect symmetry & weight' },
+                                    { t: 'Vacuum Casting Technology', d: 'Zero porosity finishes' },
+                                    { t: 'Precision Laser Soldering', d: 'Seamless joints' }
+                                ].map((item, i) => (
+                                    <li key={i} className="flex gap-4 group">
+                                        <div className="h-12 w-12 border border-white/10 rounded-full flex items-center justify-center shrink-0 group-hover:border-primary/50 transition-colors">
+                                            <Check className="h-5 w-5 text-primary" />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-white font-serif text-lg">{item.t}</h4>
+                                            <p className="text-gray-500 text-sm">{item.d}</p>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <Button size="lg" className="bg-white text-black hover:bg-white/90 border-none rounded-none px-8 font-semibold tracking-wide" asChild>
+                                <Link href="/manufacturing" className="flex items-center gap-2">
+                                    Explore Facility <MoveRight className="w-4 h-4" />
+                                </Link>
+                            </Button>
+                        </motion.div>
                     </div>
                 </div>
             </div>

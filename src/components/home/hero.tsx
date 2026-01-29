@@ -3,49 +3,112 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import { ArrowRight, Star } from "lucide-react"
 
 export function Hero() {
     return (
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
-            {/* Background with luxury gradient and pattern overlay */}
-            <div className="absolute inset-0 bg-luxury-gradient" />
-            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-            <div className="absolute inset-0 bg-black/40" />
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
+            {/* Background Layers */}
+            <div className="absolute inset-0 bg-background z-0" />
+            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] z-0" />
 
-            {/* Glow effects */}
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px]" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[128px]" />
+            {/* Ambient Spotlights */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/3 translate-y-1/3" />
 
-            <div className="container relative z-10 px-4 text-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <span className="inline-block py-1 px-3 rounded-full bg-surface-light border border-surface-light text-primary text-sm font-medium tracking-wider mb-6">
-                        EST. 1995 • SINGUR, WEST BENGAL
-                    </span>
-                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
-                        Mastery in <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#FFE5B4] to-primary">
-                            Gold & Diamond
-                        </span>
-                        <br /> Manufacturing
-                    </h1>
-                    <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light">
-                        Premier B2B partner for retailers and wholesalers.
-                        Delivering hallmark purity, exquisite craftsmanship, and bulk supply solutions.
-                    </p>
+            <div className="container relative z-10 px-4 mx-auto">
+                <div className="grid lg:grid-cols-2 gap-12 items-center">
 
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button size="lg" className="rounded-full text-lg px-8 py-6" asChild>
-                            <Link href="/contact">Request Bulk Quote</Link>
-                        </Button>
-                        <Button variant="outline" size="lg" className="rounded-full text-lg px-8 py-6" asChild>
-                            <Link href="/manufacturing">Explore Capability</Link>
-                        </Button>
-                    </div>
-                </motion.div>
+                    {/* Left Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        <div className="flex items-center gap-4 mb-8">
+                            <span className="h-[1px] w-12 bg-primary/50"></span>
+                            <span className="text-primary text-sm font-medium tracking-[0.2em] uppercase">Est. 1995 • West Bengal</span>
+                        </div>
+
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-[1.1] mb-8">
+                            Legacy of <br />
+                            <span className="text-gold-gradient relative inline-block">
+                                Pure Gold
+                                {/* Decorative underline */}
+                                <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
+                                </svg>
+                            </span>
+                        </h1>
+
+                        <p className="text-gray-400 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-light border-l-2 border-primary/20 pl-6">
+                            Chhanda Jewellers defines the standard of B2B jewellery manufacturing.
+                            We blend traditional artistry with modern precision to deliver exquisitely finished Hallmark jewellery.
+                        </p>
+
+                        <div className="flex flex-col sm:flex-row gap-6">
+                            <Button className="h-14 px-8 rounded-none border border-primary/50 bg-primary/10 text-primary hover:bg-primary hover:text-black hover:border-primary transition-all duration-500 uppercase tracking-wider text-sm font-semibold group">
+                                <Link href="/contact" className="flex items-center gap-2">
+                                    Start Partnership
+                                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                                </Link>
+                            </Button>
+                            <Button variant="outline" className="h-14 px-8 rounded-none border-zinc-800 text-gray-400 hover:text-white hover:border-white transition-all duration-300 uppercase tracking-wider text-sm" asChild>
+                                <Link href="/products">View Collections</Link>
+                            </Button>
+                        </div>
+
+                        {/* Stats */}
+                        <div className="mt-16 grid grid-cols-3 gap-8 border-t border-white/5 pt-8">
+                            <div>
+                                <h3 className="text-3xl font-serif text-white mb-1">25+</h3>
+                                <p className="text-xs text-gray-500 uppercase tracking-widest">Years Experience</p>
+                            </div>
+                            <div>
+                                <h3 className="text-3xl font-serif text-white mb-1">10k+</h3>
+                                <p className="text-xs text-gray-500 uppercase tracking-widest">Designs Created</p>
+                            </div>
+                            <div>
+                                <h3 className="text-3xl font-serif text-white mb-1">100%</h3>
+                                <p className="text-xs text-gray-500 uppercase tracking-widest">Hallmark Purity</p>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Right Visual */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        className="relative hidden lg:block h-[700px] w-full"
+                    >
+                        {/* Abstract Gold Visual - Placeholder for a real tall jewelry shot */}
+                        <div className="absolute top-10 right-0 w-full h-full bg-gradient-to-br from-zinc-900 to-black border border-white/5 p-4 ">
+                            <div className="w-full h-full relative overflow-hidden bg-black group">
+                                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-black to-black opacity-60"></div>
+                                {/* Simulation of a jewelry image */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-[1px] border-primary/30 rotate-45 group-hover:rotate-90 transition-transform duration-[1.5s] ease-in-out"></div>
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-[1px] border-primary/50 rotate-45 group-hover:-rotate-0 transition-transform duration-[1.5s] ease-in-out delay-100"></div>
+
+                                <div className="absolute bottom-10 left-10 right-10 text-center">
+                                    <p className="text-primary font-serif italic text-2xl">"Craftsmanship that speaks."</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Floating 'Premium' Badge */}
+                        <motion.div
+                            animate={{ y: [0, -10, 0] }}
+                            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                            className="absolute -left-12 top-1/3 bg-black/80 backdrop-blur-md border border-primary/30 p-6 max-w-[200px]"
+                        >
+                            <div className="flex gap-1 mb-2">
+                                {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 text-primary fill-primary" />)}
+                            </div>
+                            <p className="text-gray-300 text-sm font-light">Trusted by leading retailers across India.</p>
+                        </motion.div>
+                    </motion.div>
+                </div>
             </div>
         </section>
     )
