@@ -88,6 +88,20 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
                                 <div className="text-gray-400">Material</div>
                                 <div className="text-white font-medium">{product.material}</div>
 
+                                {(product.category === 'Diamond Jewellery' || product.diamondClarity) && product.diamondClarity && (
+                                    <>
+                                        <div className="text-gray-400">Diamond Clarity</div>
+                                        <div className="text-white font-medium">{product.diamondClarity}</div>
+                                    </>
+                                )}
+
+                                {(product.category === 'Diamond Jewellery' || product.certification) && product.certification && (
+                                    <>
+                                        <div className="text-gray-400">Certification</div>
+                                        <div className="text-white font-medium">{product.certification}</div>
+                                    </>
+                                )}
+
                                 <div className="text-gray-400">Gross Weight</div>
                                 <div className="text-white font-medium">{product.weight}</div>
 
