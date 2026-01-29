@@ -42,7 +42,7 @@ export function Navbar() {
                         {/* Company Logo */}
                         <div className="relative h-12 w-12">
                             <Image
-                                src="/logo.png"
+                                src="/icon.png"
                                 alt="Chhanda Jewellers Logo"
                                 fill
                                 className="object-contain"

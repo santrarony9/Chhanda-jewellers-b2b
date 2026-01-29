@@ -8,8 +8,12 @@ export function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     <div className="space-y-6">
                         <Link href="/" className="flex items-center gap-2">
-                            <div className="h-10 w-10 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-black font-bold font-serif text-xl border border-primary/50">
-                                C
+                            <div className="relative h-10 w-10">
+                                <img
+                                    src="/icon.png"
+                                    alt="Chhanda Jewellers Logo"
+                                    className="object-contain w-full h-full"
+                                />
                             </div>
                             <span className="font-serif text-2xl font-bold tracking-wide text-primary">
                                 CHHANDA <span className="text-foreground font-light text-sm block tracking-[0.2em]">JEWELLERS</span>

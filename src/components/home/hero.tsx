@@ -27,7 +27,7 @@ export function Hero() {
                     >
                         <div className="flex items-center gap-4 mb-8">
                             <span className="h-[1px] w-12 bg-primary/50"></span>
-                            <span className="text-primary text-sm font-medium tracking-[0.2em] uppercase">Est. 1995 • West Bengal</span>
+                            <span className="text-primary text-sm font-medium tracking-[0.2em] uppercase">Est. 2000 • West Bengal</span>
                         </div>
 
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-[1.1] mb-8">
