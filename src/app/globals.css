@@ -9,11 +9,8 @@
 
 @layer base {
   body {
-    /* Replaced @apply with standard CSS to fix build error */
-    background-color: #050505;
-    color: #FAFAFA;
-    letter-spacing: 0.025em;
-    /* tracking-wide */
+    @apply bg-background text-foreground tracking-wide;
+    /* Noise Texture Overlay */
     position: relative;
   }
 
