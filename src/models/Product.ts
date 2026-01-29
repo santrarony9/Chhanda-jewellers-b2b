@@ -13,18 +13,24 @@ const ProductSchema = new Schema({
     category: {
         type: String,
         required: true,
-        enum: ['Bangles', 'Necklaces', 'Earrings', 'Rings', 'Pendants', 'Sets', 'Mangalsutra', 'Chains', 'Bracelets', 'Diamond'],
+        enum: ['Gold Jewellery', 'Diamond Jewellery', 'Platinum', 'Gemstones', 'Coins', 'Custom'],
     },
     variety: {
-        type: String, // e.g. "Solitaire", "Studs", "Choker" - primarily for Diamond category but flexible
+        type: String,
         required: false,
     },
+    purity: {
+        type: String,
+        required: true,
+        enum: ['14K', '18K', '22K', '24K', 'Platinum 950', 'Sterling Silver'],
+        default: '22K'
+    },
     material: {
-        type: String, // e.g., 'Gold 22K', 'Diamond', 'Platinum'
+        type: String,
         required: true,
     },
     weight: {
-        type: String, // e.g. "12.5g" - keeping as string for flexibility or number if strict
+        type: String, // Stored as string to allow ranges like "10-12g" if needed, though exact is better
         required: true,
     },
     price: {

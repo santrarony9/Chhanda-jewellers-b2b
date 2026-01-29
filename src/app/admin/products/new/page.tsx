@@ -17,13 +17,22 @@ export default function AddProductPage() {
         description: "",
         price: "" as number | string,
         category: "Gold Jewellery",
-        material: "22K Gold",
+        variety: "",
+        purity: "22K",
+        material: "Gold",
         weight: "",
         images: [] as string[],
         isFeatured: false
     });
 
     const categories = ["Gold Jewellery", "Diamond Jewellery", "Platinum", "Gemstones", "Coins", "Custom"];
+    const purities = ["24K", "22K", "18K", "14K", "Platinum 950", "Sterling Silver"];
+
+    // Expanded Variety List (Applicable to multiple categories)
+    const varieties = [
+        "Necklace", "Bangle", "Ring", "Earring", "Pendant", "Chain",
+        "Mangalsutra", "Bracelet", "Set", "Nose Pin", "Solitaire", "Coin"
+    ];
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -94,15 +103,15 @@ export default function AddProductPage() {
                                 />
                             </div>
                             <div className="space-y-2">
-                                <Label>Category *</Label>
-                                <select
-                                    name="category"
-                                    value={formData.category}
+                                <Label>Material Type</Label>
+                                <Input
+                                    name="material"
+                                    value={formData.material}
                                     onChange={handleInputChange}
-                                    className="w-full h-10 rounded-md border border-zinc-700 bg-black px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                                >
-                                    {categories.map(c => <option key={c} value={c}>{c}</option>)}
-                                </select>
+                                    placeholder="e.g. Yellow Gold"
+                                    required
+                                    className="bg-black border-zinc-700 focus:border-primary"
+                                />
                             </div>
                         </div>
 
@@ -117,37 +126,66 @@ export default function AddProductPage() {
                             />
                         </div>
 
-                        <div className="grid grid-cols-3 gap-6">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                             <div className="space-y-2">
-                                <Label>Material</Label>
-                                <Input
-                                    name="material"
-                                    value={formData.material}
+                                <Label>Category *</Label>
+                                <select
+                                    name="category"
+                                    value={formData.category}
                                     onChange={handleInputChange}
-                                    className="bg-black border-zinc-700 focus:border-primary"
-                                />
+                                    className="w-full h-10 rounded-md border border-zinc-700 bg-black px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-white"
+                                >
+                                    {categories.map(c => <option key={c} value={c}>{c}</option>)}
+                                </select>
                             </div>
+
                             <div className="space-y-2">
-                                <Label>Weight</Label>
+                                <Label>Product Type (Variety)</Label>
+                                <select
+                                    name="variety"
+                                    value={formData.variety}
+                                    onChange={handleInputChange}
+                                    className="w-full h-10 rounded-md border border-zinc-700 bg-black px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-white"
+                                >
+                                    <option value="">Select Type</option>
+                                    {varieties.map(v => <option key={v} value={v}>{v}</option>)}
+                                </select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label>Purity</Label>
+                                <select
+                                    name="purity"
+                                    value={formData.purity}
+                                    onChange={handleInputChange}
+                                    className="w-full h-10 rounded-md border border-zinc-700 bg-black px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-white"
+                                >
+                                    {purities.map(p => <option key={p} value={p}>{p}</option>)}
+                                </select>
+                            </div>
+
+                            <div className="space-y-2">
+                                <Label>Weight (g)</Label>
                                 <Input
                                     name="weight"
                                     value={formData.weight}
                                     onChange={handleInputChange}
-                                    placeholder="e.g. 15.5g"
+                                    placeholder="e.g. 10-12g"
                                     required
                                     className="bg-black border-zinc-700 focus:border-primary"
                                 />
                             </div>
-                            <div className="space-y-2">
-                                <Label>Price (Optional)</Label>
-                                <Input
-                                    name="price"
-                                    type="number"
-                                    value={formData.price}
-                                    onChange={handleInputChange}
-                                    className="bg-black border-zinc-700 focus:border-primary"
-                                />
-                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label>Price (Optional)</Label>
+                            <Input
+                                name="price"
+                                type="number"
+                                value={formData.price}
+                                onChange={handleInputChange}
+                                className="bg-black border-zinc-700 focus:border-primary w-1/3"
+                            />
                         </div>
 
                         <div className="space-y-2">
