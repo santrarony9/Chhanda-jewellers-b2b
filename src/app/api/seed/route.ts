@@ -9,11 +9,15 @@ export async function GET() {
 
         // Check if admin already exists
         const existingAdmin = await User.findOne({ email: 'admin@chhandajewellers.com' });
-        if (existingAdmin) {
-            return NextResponse.json({ message: 'Admin user already exists.' }, { status: 400 });
-        }
 
         const hashedPassword = await bcrypt.hash('admin123', 10);
+
+        if (existingAdmin) {
+            // Update existing admin password
+            existingAdmin.password = hashedPassword;
+            await existingAdmin.save();
+            return NextResponse.json({ message: 'Admin password reset successfully', user: { email: existingAdmin.email } });
+        }
 
         const adminUser = await User.create({
             name: 'Admin',
