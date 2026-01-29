@@ -88,7 +88,7 @@ export function Hero() {
                             <div className="relative w-full h-full">
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
                                 <Image
-                                    src="/hero-jewellery-v2.png"
+                                    src="/hero-jewellery-v3.png"
                                     alt="Exquisite Gold Jewellery"
                                     fill
                                     className="object-contain drop-shadow-2xl"
