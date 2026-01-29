@@ -11,7 +11,7 @@ const categories = [
         subtitle: "22K & 18K Hallmarked",
         href: "/products?cat=gold",
         gradient: "from-[#D4AF37]/20 to-[#AA8C2C]/5", // Gold
-        visual: "/featured-1.png",
+        visual: "/cat-gold.png",
         colSpan: "md:col-span-2",
         delay: 0
     },
@@ -20,7 +20,7 @@ const categories = [
         subtitle: "VVS/VS Clarity Certified",
         href: "/products?cat=diamond",
         gradient: "from-blue-200/10 to-blue-400/5", // Diamond
-        visual: null,
+        visual: "/cat-diamond.png",
         colSpan: "md:col-span-1",
         delay: 0.1
     },
@@ -29,7 +29,7 @@ const categories = [
         subtitle: "Wedding Sets",
         href: "/products?cat=bridal",
         gradient: "from-red-800/20 to-rose-900/10", // Deep Red/Rose
-        visual: null,
+        visual: "/cat-bridal.png",
         colSpan: "md:col-span-1",
         delay: 0.2
     },
@@ -38,7 +38,7 @@ const categories = [
         subtitle: "Modern & Minimal",
         href: "/products?cat=lightweight",
         gradient: "from-zinc-700/30 to-zinc-900/30",
-        visual: null,
+        visual: "/cat-lightweight.png",
         colSpan: "md:col-span-2",
         delay: 0.3
     }

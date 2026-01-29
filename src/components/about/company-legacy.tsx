@@ -15,7 +15,7 @@ export function CompanyLegacy() {
                         viewport={{ once: true }}
                         className="text-primary text-sm font-bold tracking-widest uppercase mb-3"
                     >
-                        Since 1995
+                        Since 2000
                     </motion.h2>
                     <motion.h3
                         initial={{ opacity: 0, y: 20 }}

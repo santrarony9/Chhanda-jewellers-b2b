@@ -2,6 +2,8 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { ProductFilters } from "@/components/products/filters"
 import { ProductGrid } from "@/components/products/product-grid"
+import { FeaturedCollection } from "@/components/products/featured-collection"
+
 
 export const metadata = {
     title: "Product Catalog | Chhanda Jewellers - B2B Collection",
@@ -20,6 +22,10 @@ export default function ProductsPage() {
                     <p className="text-gray-400">Exclusive B2B Designs • Gold (22K/18K) • Certified Diamonds</p>
                 </div>
             </section>
+
+            <FeaturedCollection />
+
+            <FeaturedCollection />
 
             <section className="py-12">
                 <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8">

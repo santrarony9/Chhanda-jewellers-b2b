@@ -20,7 +20,7 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4 text-center">
                     <h1 className="text-4xl md:text-5xl font-serif text-primary font-bold mb-4">Our Story</h1>
                     <p className="text-gray-400 max-w-2xl mx-auto">
-                        Building trust through purity and precision since 1995.
+                        Building trust through purity and precision since 2000.
                     </p>
                 </div>
             </section>

@@ -20,7 +20,7 @@ export function ManufacturingHighlight() {
 
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-0">
                                 <span className="block text-9xl font-serif font-black text-white/5">EST</span>
-                                <span className="block text-9xl font-serif font-black text-white/5">1995</span>
+                                <span className="block text-9xl font-serif font-black text-white/5">2000</span>
                             </div>
 
                             <motion.div
