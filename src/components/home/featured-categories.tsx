@@ -5,43 +5,42 @@ import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
-const categories = [
-    {
-        title: "Gold Jewellery",
+{
+    title: "Gold Jewellery",
         subtitle: "22K & 18K Hallmarked",
-        href: "/products?cat=gold",
-        gradient: "from-[#D4AF37]/20 to-[#AA8C2C]/5", // Gold
-        visual: "bg-[#D4AF37]",
-        colSpan: "md:col-span-2",
-        delay: 0
-    },
-    {
-        title: "Diamond Jewellery",
+            href: "/products?cat=gold",
+                gradient: "from-[#D4AF37]/20 to-[#AA8C2C]/5", // Gold
+                    visual: "/featured-1.png",
+                        colSpan: "md:col-span-2",
+                            delay: 0
+},
+{
+    title: "Diamond Jewellery",
         subtitle: "VVS/VS Clarity Certified",
-        href: "/products?cat=diamond",
-        gradient: "from-blue-200/10 to-blue-400/5", // Diamond
-        visual: "bg-blue-100",
-        colSpan: "md:col-span-1",
-        delay: 0.1
-    },
-    {
-        title: "Bridal Collection",
+            href: "/products?cat=diamond",
+                gradient: "from-blue-200/10 to-blue-400/5", // Diamond
+                    visual: null,
+                        colSpan: "md:col-span-1",
+                            delay: 0.1
+},
+{
+    title: "Bridal Collection",
         subtitle: "Wedding Sets",
-        href: "/products?cat=bridal",
-        gradient: "from-red-800/20 to-rose-900/10", // Deep Red/Rose
-        visual: "bg-rose-500",
-        colSpan: "md:col-span-1",
-        delay: 0.2
-    },
-    {
-        title: "Lightweight Daily Wear",
+            href: "/products?cat=bridal",
+                gradient: "from-red-800/20 to-rose-900/10", // Deep Red/Rose
+                    visual: null,
+                        colSpan: "md:col-span-1",
+                            delay: 0.2
+},
+{
+    title: "Lightweight Daily Wear",
         subtitle: "Modern & Minimal",
-        href: "/products?cat=lightweight",
-        gradient: "from-zinc-700/30 to-zinc-900/30",
-        visual: "bg-white",
-        colSpan: "md:col-span-2",
-        delay: 0.3
-    }
+            href: "/products?cat=lightweight",
+                gradient: "from-zinc-700/30 to-zinc-900/30",
+                    visual: null,
+                        colSpan: "md:col-span-2",
+                            delay: 0.3
+}
 ]
 
 export function FeaturedCategories() {
@@ -81,9 +80,13 @@ export function FeaturedCategories() {
                                 <div className={`absolute inset-0 bg-gradient-to-br ${cat.gradient} opacity-40 group-hover:opacity-60 transition-opacity duration-700`} />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 
-                                {/* Abstract Visual Cue */}
-                                <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-40 transition-opacity duration-500 transform group-hover:scale-110">
-                                    <div className={`w-32 h-32 rounded-full blur-3xl ${cat.visual}`} />
+                                {/* Visual Cue */}
+                                <div className="absolute top-0 right-0 w-full h-full opacity-40 group-hover:opacity-60 transition-opacity duration-500 -z-10">
+                                    {cat.visual ? (
+                                        <img src={cat.visual} alt={cat.title} className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700" />
+                                    ) : (
+                                        <div className="w-full h-full bg-surface-light/10" />
+                                    )}
                                 </div>
 
                                 <div className="flex justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-x-4 group-hover:translate-x-0">
@@ -93,9 +96,9 @@ export function FeaturedCategories() {
                                 </div>
 
                                 <div>
-                                    <h3 className="text-3xl font-serif text-white mb-2 group-hover:translate-x-2 transition-transform duration-300">{cat.title}</h3>
+                                    <h3 className="text-3xl font-serif text-white mb-2 group-hover:translate-x-2 transition-transform duration-300 text-shadow">{cat.title}</h3>
                                     <div className="h-[1px] w-12 bg-primary/50 mb-3 group-hover:w-20 transition-all duration-500" />
-                                    <p className="text-gray-400 text-sm tracking-wide uppercase">{cat.subtitle}</p>
+                                    <p className="text-gray-300 text-sm tracking-wide uppercase text-shadow">{cat.subtitle}</p>
                                 </div>
                             </Link>
                         </motion.div>
