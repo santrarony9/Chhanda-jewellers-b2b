@@ -48,28 +48,28 @@ export default function PartnerPage() {
                             <form className="space-y-4">
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="space-y-2">
-                                        <label className="text-sm text-gray-400">Full Name</label>
-                                        <input className="w-full bg-background border border-gray-700 rounded-md p-2 text-white focus:border-primary focus:outline-none" placeholder="John Doe" />
+                                        <label className="text-sm text-gray-400 font-medium">Full Name</label>
+                                        <input className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:border-primary focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all placeholder:text-gray-600" placeholder="John Doe" />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-sm text-gray-400">Business Name</label>
-                                        <input className="w-full bg-background border border-gray-700 rounded-md p-2 text-white focus:border-primary focus:outline-none" placeholder="Jewellers Name" />
+                                        <label className="text-sm text-gray-400 font-medium">Business Name</label>
+                                        <input className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:border-primary focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all placeholder:text-gray-600" placeholder="Jewellers Name" />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-sm text-gray-400">Phone</label>
-                                    <input className="w-full bg-background border border-gray-700 rounded-md p-2 text-white focus:border-primary focus:outline-none" placeholder="+91 98765 43210" />
+                                    <label className="text-sm text-gray-400 font-medium">Phone</label>
+                                    <input className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:border-primary focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all placeholder:text-gray-600" placeholder="+91 98765 43210" />
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-sm text-gray-400">GST Number</label>
-                                    <input className="w-full bg-background border border-gray-700 rounded-md p-2 text-white focus:border-primary focus:outline-none" placeholder="GSTIN" />
+                                    <label className="text-sm text-gray-400 font-medium">GST Number</label>
+                                    <input className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:border-primary focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all placeholder:text-gray-600" placeholder="GSTIN" />
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-sm text-gray-400">Message</label>
-                                    <textarea className="w-full bg-background border border-gray-700 rounded-md p-2 text-white focus:border-primary focus:outline-none min-h-[100px]" placeholder="Tell us about your business..." />
+                                    <label className="text-sm text-gray-400 font-medium">Message</label>
+                                    <textarea className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:border-primary focus:ring-1 focus:ring-primary/50 focus:outline-none min-h-[100px] transition-all placeholder:text-gray-600" placeholder="Tell us about your business..." />
                                 </div>
 
                                 <Button className="w-full bg-primary text-black font-bold hover:bg-primary/90">Submit Application</Button>
