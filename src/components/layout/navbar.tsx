@@ -17,28 +17,16 @@ const navigation = [
 ]
 
 import { TimeDisplay } from "@/components/layout/time-display"
-import { Download } from "lucide-react"
 
 export function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
     const [scrolled, setScrolled] = React.useState(false)
-    const [profileUrl, setProfileUrl] = React.useState("")
 
     React.useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 20)
         }
         window.addEventListener("scroll", handleScroll)
-
-        // Fetch settings for profile URL
-        fetch("/api/settings")
-            .then(res => res.json())
-            .then(data => {
-                if (data.success && data.data.companyProfileUrl) {
-                    setProfileUrl(data.data.companyProfileUrl)
-                }
-            })
-            .catch(err => console.error("Failed to fetch settings", err))
 
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
@@ -102,12 +90,6 @@ export function Navbar() {
                     ))}
                 </div>
                 <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-3">
-                    <Button variant="outline" className="rounded-none border-primary/30 text-primary-200 hover:text-black hover:bg-primary-400 hover:border-primary-400 transition-all duration-300 uppercase text-xs tracking-widest px-4 py-2 backdrop-blur-sm" asChild>
-                        <a href={profileUrl || "#"} target={profileUrl ? "_blank" : "_self"} rel="noopener noreferrer">
-                            <Download className="h-3 w-3 mr-2" />
-                            Profile
-                        </a>
-                    </Button>
                     <Button variant="outline" className="rounded-none border-primary/30 text-primary-200 hover:text-black hover:bg-primary-400 hover:border-primary-400 transition-all duration-300 uppercase text-xs tracking-widest px-6 py-2 backdrop-blur-sm" asChild>
                         <Link href="/login">Partner Login</Link>
                     </Button>
@@ -160,12 +142,6 @@ export function Navbar() {
                             ))}
                         </div>
                         <div className="py-8 space-y-4">
-                            <Button className="w-full justify-center bg-zinc-800 hover:bg-zinc-700 text-white font-medium tracking-widest uppercase py-6 rounded-none border border-zinc-700" asChild>
-                                <a href={profileUrl || "#"} target={profileUrl ? "_blank" : "_self"} rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
-                                    <Download className="h-4 w-4 mr-2" />
-                                    Download Profile
-                                </a>
-                            </Button>
                             <Button className="w-full justify-center bg-primary-600 hover:bg-primary-500 text-black font-medium tracking-widest uppercase py-6 rounded-none" asChild>
                                 <Link href="/login" onClick={() => setMobileMenuOpen(false)}>Partner Login</Link>
                             </Button>

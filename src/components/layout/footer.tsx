@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Download } from "lucide-react"
 import dbConnect from "@/lib/db"
 import SiteSettings from "@/models/SiteSettings"
 
@@ -37,6 +37,18 @@ export async function Footer() {
                             {settings.facebook && <SocialLink href={settings.facebook} icon={<Facebook className="h-5 w-5" />} />}
                             {settings.instagram && <SocialLink href={settings.instagram} icon={<Instagram className="h-5 w-5" />} />}
                             <SocialLink href="#" icon={<Linkedin className="h-5 w-5" />} />
+                        </div>
+
+                        <div className="pt-4">
+                            <a
+                                href={settings.companyProfileUrl || "#"}
+                                target={settings.companyProfileUrl ? "_blank" : "_self"}
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 px-6 py-3 transition-colors duration-300 uppercase tracking-widest text-xs font-bold"
+                            >
+                                <Download className="h-4 w-4" />
+                                Download Profile
+                            </a>
                         </div>
                     </div>
 
