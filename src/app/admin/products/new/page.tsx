@@ -22,7 +22,8 @@ export default function AddProductPage() {
         material: "Gold",
         weight: "",
         images: [] as string[],
-        isFeatured: false
+        isFeatured: false,
+        diamondQuality: "",
     });
 
     const categories = ["Gold Jewellery", "Diamond Jewellery", "Platinum", "Gemstones", "Coins", "Custom"];
@@ -175,6 +176,25 @@ export default function AddProductPage() {
                                     className="bg-black border-zinc-700 focus:border-primary"
                                 />
                             </div>
+
+
+                            <div className="space-y-2">
+                                <Label>Diamond Quality</Label>
+                                <select
+                                    name="diamondQuality"
+                                    value={(formData as any).diamondQuality}
+                                    onChange={handleInputChange}
+                                    className="w-full h-10 rounded-md border border-zinc-700 bg-black px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary text-white"
+                                >
+                                    <option value="">Select Quality</option>
+                                    <option value="VVS-EF">VVS-EF</option>
+                                    <option value="VVS-FG">VVS-FG</option>
+                                    <option value="VS-GH">VS-GH</option>
+                                    <option value="SI-IJ">SI-IJ</option>
+                                    <option value="I-JK">I-JK</option>
+                                    <option value="Polki/Uncut">Polki/Uncut</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div className="space-y-2">
@@ -275,7 +295,7 @@ export default function AddProductPage() {
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
