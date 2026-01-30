@@ -84,8 +84,8 @@ export async function Footer() {
                 <div className="border-t border-surface-light/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
                     <p>&copy; {new Date().getFullYear()} Chhanda Jewellers. All rights reserved.</p>
                     <div className="flex gap-6">
-                        <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
+                        <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+                        <Link href="/terms-conditions" className="hover:text-primary transition-colors">Terms of Service</Link>
                     </div>
                 </div>
             </div>
