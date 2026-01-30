@@ -5,7 +5,8 @@ import { ArrowRight, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
-const categories = [
+// Fallback data if no props provided
+const defaultCategories = [
     {
         title: "100% Natural Jewellery",
         subtitle: "22K & 18K Hallmarked",
@@ -44,7 +45,14 @@ const categories = [
     }
 ]
 
-export function FeaturedCategories() {
+interface FeaturedCategoriesProps {
+    categories?: any[]
+}
+
+export function FeaturedCategories({ categories = defaultCategories }: FeaturedCategoriesProps) {
+    // Ensure we have data
+    const displayCategories = categories && categories.length > 0 ? categories : defaultCategories;
+
     return (
         <section className="py-32 bg-background relative overflow-hidden">
             {/* Decorative Elements */}
@@ -77,7 +85,7 @@ export function FeaturedCategories() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {categories.map((cat, index) => (
+                    {displayCategories.map((cat, index) => (
                         <motion.div
                             key={index}
                             className={`${cat.colSpan} h-[450px] group relative overflow-hidden border border-white/5 bg-surface-dark backdrop-blur-sm`}

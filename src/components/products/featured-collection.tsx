@@ -5,7 +5,7 @@ import { ArrowRight, Star } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
-const featuredProducts = [
+const defaultProducts = [
     {
         id: "feat-1",
         title: "Royal Antique Kundan Necklace",
@@ -29,7 +29,13 @@ const featuredProducts = [
     }
 ]
 
-export function FeaturedCollection() {
+interface FeaturedCollectionProps {
+    products?: any[]
+}
+
+export function FeaturedCollection({ products = defaultProducts }: FeaturedCollectionProps) {
+    const displayProducts = products && products.length > 0 ? products : defaultProducts;
+
     return (
         <section className="py-20 bg-surface-dark border-b border-white/5">
             <div className="container mx-auto px-4">
@@ -46,7 +52,7 @@ export function FeaturedCollection() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {featuredProducts.map((product, index) => (
+                    {displayProducts.map((product, index) => (
                         <motion.div
                             key={product.id}
                             initial={{ opacity: 0, y: 30 }}

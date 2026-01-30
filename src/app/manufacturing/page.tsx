@@ -4,12 +4,31 @@ import { ManufacturingWorkflow } from "@/components/manufacturing/workflow"
 import { ManufacturingGallery } from "@/components/manufacturing/gallery"
 import { BulkEnquiryCTA } from "@/components/home/bulk-enquiry-cta"
 
+import dbConnect from "@/lib/db"
+import SiteSettings from "@/models/SiteSettings"
+
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
     title: "Manufacturing Process | Chhanda Jewellers - B2B Production",
     description: "Explore our end-to-end jewellery manufacturing process in Singur. From CAD design to casting and finishing.",
 }
 
-export default function ManufacturingPage() {
+async function getSiteContent() {
+    try {
+        await dbConnect();
+        const settings = await SiteSettings.findOne().lean();
+        if (!settings) return null;
+        return JSON.parse(JSON.stringify(settings));
+    } catch (error) {
+        return null;
+    }
+}
+
+export default async function ManufacturingPage() {
+    const content = await getSiteContent();
+    const galleryItems = content?.manufacturing?.gallery;
+
     return (
         <main className="bg-background min-h-screen pt-20">
             <Navbar />
@@ -32,7 +51,7 @@ export default function ManufacturingPage() {
             </section>
 
             <ManufacturingWorkflow />
-            <ManufacturingGallery />
+            <ManufacturingGallery items={galleryItems} />
             <BulkEnquiryCTA />
 
             <Footer />

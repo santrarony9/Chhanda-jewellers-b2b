@@ -6,7 +6,11 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Star } from "lucide-react"
 
-export function Hero() {
+interface HeroProps {
+    heroImage?: string
+}
+
+export function Hero({ heroImage }: HeroProps) {
     const { scrollY } = useScroll();
     const yRange = useTransform(scrollY, [0, 500], [0, 100]);
 
@@ -120,7 +124,7 @@ export function Hero() {
                             <div className="relative w-full h-full">
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
                                 <Image
-                                    src="/hero-jewellery-v3.png"
+                                    src={heroImage || "/hero-jewellery-v3.png"}
                                     alt="Exquisite Gold Jewellery"
                                     fill
                                     className="object-contain drop-shadow-2xl"
