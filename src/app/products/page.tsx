@@ -6,7 +6,7 @@ import { FeaturedCollection } from "@/components/products/featured-collection"
 import dbConnect from "@/lib/db"
 import SiteSettings from "@/models/SiteSettings"
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 30;
 
 export const metadata = {
     title: "Product Catalog | Chhanda Jewellers - B2B Collection",

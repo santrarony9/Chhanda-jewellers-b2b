@@ -7,7 +7,7 @@ import { BulkEnquiryCTA } from "@/components/home/bulk-enquiry-cta"
 import dbConnect from "@/lib/db"
 import SiteSettings from "@/models/SiteSettings"
 
-export const dynamic = 'force-dynamic';
+export const revalidate = 30;
 
 export const metadata = {
     title: "Manufacturing Process | Chhanda Jewellers - B2B Production",

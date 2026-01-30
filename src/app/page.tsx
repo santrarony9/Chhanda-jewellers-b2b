@@ -8,8 +8,8 @@ import { BulkEnquiryCTA } from "@/components/home/bulk-enquiry-cta"
 import dbConnect from "@/lib/db"
 import SiteSettings from "@/models/SiteSettings"
 
-// Force dynamic rendering to ensure fresh content
-export const dynamic = 'force-dynamic';
+// Revalidate every 30 seconds for better performance than force-dynamic
+export const revalidate = 30;
 
 async function getSiteContent() {
   try {

@@ -105,7 +105,7 @@ export function ContactForm() {
             <p className="text-gray-400 mb-8 text-sm relative z-10">Fill out the form below and our sales team will get back to you within 24 hours.</p>
 
             <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                         <label className="text-sm text-gray-400 font-medium">Company Name *</label>
                         <input
@@ -130,7 +130,7 @@ export function ContactForm() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                         <label className="text-sm text-gray-400 font-medium">Phone Number *</label>
                         <input
@@ -157,7 +157,7 @@ export function ContactForm() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                         <label className="text-sm text-gray-400 font-medium">GST Number (Optional)</label>
                         <input
