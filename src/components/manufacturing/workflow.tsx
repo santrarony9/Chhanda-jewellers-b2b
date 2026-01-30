@@ -60,12 +60,12 @@ export function ManufacturingWorkflow() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className={`relative flex gap-6 md:block ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12 md:mt-24'}`}
+                                className={`relative flex gap-6 md:block ${index % 2 === 0 ? 'md:text-right md:pr-24' : 'md:text-left md:pl-24 md:mt-24'}`}
                             >
                                 {/* Icon Circle */}
                                 <div className={`
                     absolute top-0 md:top-0 h-16 w-16 rounded-full bg-background border-2 border-primary flex items-center justify-center z-10
-                    ${index % 2 === 0 ? 'md:-right-[4.5rem]' : 'md:-left-[4.5rem]'}
+                    ${index % 2 === 0 ? 'md:-right-[3.5rem]' : 'md:-left-[3.5rem]'}
                     left-0 md:left-auto
                 `}>
                                     <step.icon className="h-8 w-8 text-primary" />
