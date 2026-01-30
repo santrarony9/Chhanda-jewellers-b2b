@@ -49,7 +49,7 @@ export function ManufacturingWorkflow() {
                     {/* Vertical Line for Mobile */}
                     <div className="absolute left-8 top-0 bottom-0 w-px bg-surface-light md:hidden" />
 
-                    <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-12 md:gap-y-24 relative">
+                    <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-32 md:gap-y-24 relative">
                         {/* Center Line for Desktop */}
                         <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-surface-light -translate-x-1/2" />
 
@@ -60,12 +60,12 @@ export function ManufacturingWorkflow() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                className={`relative flex gap-6 md:block ${index % 2 === 0 ? 'md:text-right md:pr-24' : 'md:text-left md:pl-24 md:mt-24'}`}
+                                className={`relative flex gap-6 md:block ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12 md:mt-24'}`}
                             >
                                 {/* Icon Circle */}
                                 <div className={`
                     absolute top-0 md:top-0 h-16 w-16 rounded-full bg-background border-2 border-primary flex items-center justify-center z-10
-                    ${index % 2 === 0 ? 'md:-right-[3.5rem]' : 'md:-left-[3.5rem]'}
+                    ${index % 2 === 0 ? 'md:-right-[6rem]' : 'md:-left-[6rem]'}
                     left-0 md:left-auto
                 `}>
                                     <step.icon className="h-8 w-8 text-primary" />
