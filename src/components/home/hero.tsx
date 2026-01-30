@@ -1,12 +1,15 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Star } from "lucide-react"
 
 export function Hero() {
+    const { scrollY } = useScroll();
+    const yRange = useTransform(scrollY, [0, 500], [0, 100]);
+
     return (
         <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
             {/* Background Layers */}
@@ -14,8 +17,17 @@ export function Hero() {
             <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] z-0" />
 
             {/* Ambient Spotlights */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none translate-x-1/2 -translate-y-1/2" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/3 translate-y-1/3" />
+            {/* Ambient Spotlights */}
+            <motion.div
+                animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[150px] pointer-events-none translate-x-1/2 -translate-y-1/2"
+            />
+            <motion.div
+                animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.5, 0.2] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none -translate-x-1/3 translate-y-1/3"
+            />
 
             <div className="container relative z-10 px-4 mx-auto">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -31,16 +43,35 @@ export function Hero() {
                             <span className="text-primary text-sm font-medium tracking-[0.2em] uppercase">Est. 2000 • West Bengal</span>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-[1.1] mb-8">
+                        <motion.h1
+                            className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-[1.1] mb-8"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                        >
                             Legacy of <br />
                             <span className="text-gold-gradient relative inline-block">
-                                Pure Gold
+                                <motion.span
+                                    initial={{ backgroundSize: "0% 100%" }}
+                                    animate={{ backgroundSize: "100% 100%" }}
+                                    transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+                                    className="bg-gradient-to-r from-primary to-amber-200 bg-clip-text text-transparent bg-no-repeat bg-left-bottom"
+                                >
+                                    Pure Gold
+                                </motion.span>
                                 {/* Decorative underline */}
-                                <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-50" viewBox="0 0 100 10" preserveAspectRatio="none">
+                                <motion.svg
+                                    initial={{ pathLength: 0, opacity: 0 }}
+                                    animate={{ pathLength: 1, opacity: 0.5 }}
+                                    transition={{ duration: 1.5, delay: 1, ease: "easeInOut" }}
+                                    className="absolute w-full h-3 -bottom-1 left-0 text-primary"
+                                    viewBox="0 0 100 10"
+                                    preserveAspectRatio="none"
+                                >
                                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
-                                </svg>
+                                </motion.svg>
                             </span>
-                        </h1>
+                        </motion.h1>
 
                         <p className="text-gray-400 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-light border-l-2 border-primary/20 pl-6">
                             Chhanda Jewellers defines the standard of B2B jewellery manufacturing.
@@ -77,14 +108,15 @@ export function Hero() {
                     </motion.div>
 
                     {/* Right Visual */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        className="relative hidden lg:block h-[700px] w-full"
-                    >
-                        {/* Main Hero Visual */}
-                        <div className="absolute top-10 right-0 w-full h-full">
+                    {/* Right Visual */}
+                    <div className="relative hidden lg:block h-[700px] w-full">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 50 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                            style={{ y: yRange }} // Parallax effect
+                            className="absolute top-10 right-0 w-full h-full"
+                        >
                             <div className="relative w-full h-full">
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
                                 <Image
@@ -96,20 +128,27 @@ export function Hero() {
                                     priority
                                 />
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Floating 'Premium' Badge */}
                         <motion.div
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                            className="absolute -left-12 top-1/3 bg-black/80 backdrop-blur-md border border-primary/30 p-6 max-w-[200px]"
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 1, duration: 0.8 }}
+                            className="absolute -left-12 top-1/3 z-20"
                         >
-                            <div className="flex gap-1 mb-2">
-                                {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 text-primary fill-primary" />)}
-                            </div>
-                            <p className="text-gray-300 text-sm font-light">Trusted by leading retailers across India.</p>
+                            <motion.div
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                                className="bg-black/80 backdrop-blur-md border border-primary/30 p-6 max-w-[200px] shadow-2xl shadow-primary/10"
+                            >
+                                <div className="flex gap-1 mb-2">
+                                    {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 text-primary fill-primary" />)}
+                                </div>
+                                <p className="text-gray-300 text-sm font-light leading-relaxed">Trusted by leading retailers across India.</p>
+                            </motion.div>
                         </motion.div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
