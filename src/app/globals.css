@@ -9,7 +9,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground tracking-wide;
+    @apply bg-background text-foreground tracking-wide antialiased selection:bg-primary/30 selection:text-white;
     /* Noise Texture Overlay */
     position: relative;
   }
@@ -24,12 +24,13 @@
     pointer-events: none;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
     z-index: 50;
-    opacity: 0.4;
+    opacity: 0.35;
+    mix-blend-mode: overlay;
   }
 
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -42,7 +43,7 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #444;
+    background: #D4AF37;
   }
 
   h1,
@@ -61,25 +62,38 @@
   }
 
   .text-gold-gradient {
-    /* Manual implementation of the gold gradient text style */
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    background-image: linear-gradient(to right, #D4AF37, #F3E5AB, #D4AF37);
+    background-image: linear-gradient(to right, #D4AF37, #F3E5AB, #BF953F, #F3E5AB, #D4AF37);
     background-size: 200% auto;
-    animation: shimmer 3s infinite linear;
+    animation: shimmer 5s infinite linear;
+  }
+
+  .text-shadow {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  .text-shadow-gold {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
   }
 
   .glass-panel {
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(212, 175, 55, 0.15);
-    box-sizing: border-box;
+    background-color: rgba(5, 5, 5, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-panel-gold {
+    background-color: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
   }
 }
 
-/* Explicit keyframes definition to avoid dependency on config */
 @keyframes shimmer {
   0% {
     background-position: -200% center;
