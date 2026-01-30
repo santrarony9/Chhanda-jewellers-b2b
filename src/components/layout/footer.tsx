@@ -56,7 +56,7 @@ export async function Footer() {
                         <ul className="space-y-4">
                             <FooterLink href="/products?cat=Gold Jewellery">Gold Jewellery (22K/18K)</FooterLink>
                             <FooterLink href="/products?cat=Diamond Jewellery">Diamond Jewellery</FooterLink>
-                            <FooterLink href="/products?cat=Bridal">Bridal Collection</FooterLink>
+                            <FooterLink href="/products?cat=Bridal">Gift Collection</FooterLink>
                             <FooterLink href="/products?cat=Lightweight">Lightweight Daily Wear</FooterLink>
                             <FooterLink href="/products?cat=Custom">Custom Orders</FooterLink>
                         </ul>

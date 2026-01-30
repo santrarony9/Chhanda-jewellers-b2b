@@ -25,7 +25,7 @@ export function QualityCertification() {
                         </div>
                         <h3 className="text-xl font-bold text-white mb-3">Diamond Certification</h3>
                         <p className="text-gray-400 text-sm">
-                            Our diamond jewellery comes with authenticity certificates (IGI/GIA upon request), ensuring clarity, color, and cut quality.
+                            Our diamond jewellery comes with authenticity certificates (IGI, HRD, SGI), ensuring clarity, color, and cut quality.
                         </p>
                     </div>
 

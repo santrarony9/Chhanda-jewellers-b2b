@@ -7,29 +7,29 @@ import { motion } from "framer-motion"
 
 const categories = [
     {
-        title: "Gold Jewellery",
+        title: "100% Natural Jewellery",
         subtitle: "22K & 18K Hallmarked",
         href: "/products?cat=gold",
         gradient: "from-[#D4AF37]/30 to-[#AA8C2C]/5", // Gold
-        visual: "/cat-gold.png",
+        visual: "/cat-natural-gold-new.png",
         colSpan: "md:col-span-2",
         delay: 0
     },
     {
         title: "Diamond Jewellery",
-        subtitle: "VVS/VS Clarity Certified",
+        subtitle: "IGI and HRD , SGI Certified",
         href: "/products?cat=diamond",
         gradient: "from-blue-100/10 to-blue-300/5", // Diamond (Subtle Cool)
-        visual: "/cat-diamond.png",
+        visual: "/cat-diamond-ring.png",
         colSpan: "md:col-span-1",
         delay: 0.1
     },
     {
-        title: "Bridal Collection",
+        title: "Gift Collection",
         subtitle: "Wedding Sets",
         href: "/products?cat=bridal",
         gradient: "from-rose-900/40 to-red-900/10", // Deep Red/Rose
-        visual: "/cat-bridal.png",
+        visual: "/cat-gift-new.png",
         colSpan: "md:col-span-1",
         delay: 0.2
     },

@@ -36,6 +36,10 @@ const ProductSchema = new Schema({
     price: {
         type: Number, // Optional for B2B site, maybe just for internal reference
     },
+    ringSize: {
+        type: String,
+        required: false,
+    },
     images: {
         type: [String], // Array of image URLs
         default: [],
