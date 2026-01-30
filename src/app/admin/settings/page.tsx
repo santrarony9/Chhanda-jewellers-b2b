@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ArrowLeft, Loader2, Save } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { ImageUpload } from "@/components/ui/image-upload"
 
 interface Category {
     title: string
@@ -209,12 +210,12 @@ export default function SettingsPage() {
                             <div className="space-y-4">
                                 <h3 className="text-xl font-medium text-white">Hero Section</h3>
                                 <div>
-                                    <Label>Hero Image URL</Label>
-                                    <Input
+                                    <Label className="mb-2 block">Hero Image</Label>
+                                    <ImageUpload
                                         value={formData.home?.heroImage || ''}
-                                        onChange={(e) => setFormData({ ...formData, home: { ...formData.home, heroImage: e.target.value } })}
-                                        className="bg-black border-zinc-700 text-white focus:border-primary"
+                                        onChange={(val) => setFormData({ ...formData, home: { ...formData.home, heroImage: val } })}
                                     />
+                                    <p className="text-xs text-gray-500 mt-2">Recommended: 1920x1080px, WebP or PNG</p>
                                 </div>
                             </div>
 
@@ -224,53 +225,54 @@ export default function SettingsPage() {
                                     {formData.home?.categories?.map((cat: any, index: number) => (
                                         <div key={index} className="p-4 border border-zinc-800 rounded-lg bg-black/50">
                                             <div className="grid md:grid-cols-2 gap-4">
-                                                <div>
-                                                    <Label>Title</Label>
-                                                    <Input
-                                                        value={cat.title}
-                                                        onChange={(e) => {
-                                                            const newCats = [...formData.home.categories];
-                                                            newCats[index].title = e.target.value;
-                                                            setFormData({ ...formData, home: { ...formData.home, categories: newCats } });
-                                                        }}
-                                                        className="bg-black border-zinc-700 text-white"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Label>Image URL (Visual)</Label>
-                                                    <Input
+                                                <div className="col-span-2 md:col-span-1">
+                                                    <Label className="mb-2 block">Card Image</Label>
+                                                    <ImageUpload
                                                         value={cat.image}
-                                                        onChange={(e) => {
+                                                        onChange={(val) => {
                                                             const newCats = [...formData.home.categories];
-                                                            newCats[index].image = e.target.value;
+                                                            newCats[index].image = val;
                                                             setFormData({ ...formData, home: { ...formData.home, categories: newCats } });
                                                         }}
-                                                        className="bg-black border-zinc-700 text-white"
                                                     />
                                                 </div>
-                                                <div>
-                                                    <Label>Subtitle</Label>
-                                                    <Input
-                                                        value={cat.subtitle}
-                                                        onChange={(e) => {
-                                                            const newCats = [...formData.home.categories];
-                                                            newCats[index].subtitle = e.target.value;
-                                                            setFormData({ ...formData, home: { ...formData.home, categories: newCats } });
-                                                        }}
-                                                        className="bg-black border-zinc-700 text-white"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Label>Link (href)</Label>
-                                                    <Input
-                                                        value={cat.href}
-                                                        onChange={(e) => {
-                                                            const newCats = [...formData.home.categories];
-                                                            newCats[index].href = e.target.value;
-                                                            setFormData({ ...formData, home: { ...formData.home, categories: newCats } });
-                                                        }}
-                                                        className="bg-black border-zinc-700 text-white"
-                                                    />
+                                                <div className="col-span-2 md:col-span-1 space-y-4">
+                                                    <div>
+                                                        <Label>Title</Label>
+                                                        <Input
+                                                            value={cat.title}
+                                                            onChange={(e) => {
+                                                                const newCats = [...formData.home.categories];
+                                                                newCats[index].title = e.target.value;
+                                                                setFormData({ ...formData, home: { ...formData.home, categories: newCats } });
+                                                            }}
+                                                            className="bg-black border-zinc-700 text-white"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <Label>Subtitle</Label>
+                                                        <Input
+                                                            value={cat.subtitle}
+                                                            onChange={(e) => {
+                                                                const newCats = [...formData.home.categories];
+                                                                newCats[index].subtitle = e.target.value;
+                                                                setFormData({ ...formData, home: { ...formData.home, categories: newCats } });
+                                                            }}
+                                                            className="bg-black border-zinc-700 text-white"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <Label>Link (href)</Label>
+                                                        <Input
+                                                            value={cat.href}
+                                                            onChange={(e) => {
+                                                                const newCats = [...formData.home.categories];
+                                                                newCats[index].href = e.target.value;
+                                                                setFormData({ ...formData, home: { ...formData.home, categories: newCats } });
+                                                            }}
+                                                            className="bg-black border-zinc-700 text-white"
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,29 +291,30 @@ export default function SettingsPage() {
                                     {formData.manufacturing?.gallery?.map((item: any, index: number) => (
                                         <div key={index} className="p-4 border border-zinc-800 rounded-lg bg-black/50">
                                             <div className="grid md:grid-cols-2 gap-4">
-                                                <div>
-                                                    <Label>Title</Label>
-                                                    <Input
-                                                        value={item.title}
-                                                        onChange={(e) => {
+                                                <div className="col-span-2 md:col-span-1">
+                                                    <Label className="mb-2 block">Gallery Image</Label>
+                                                    <ImageUpload
+                                                        value={item.image}
+                                                        onChange={(val) => {
                                                             const newGallery = [...formData.manufacturing.gallery];
-                                                            newGallery[index].title = e.target.value;
+                                                            newGallery[index].image = val;
                                                             setFormData({ ...formData, manufacturing: { ...formData.manufacturing, gallery: newGallery } });
                                                         }}
-                                                        className="bg-black border-zinc-700 text-white"
                                                     />
                                                 </div>
-                                                <div>
-                                                    <Label>Image URL</Label>
-                                                    <Input
-                                                        value={item.image}
-                                                        onChange={(e) => {
-                                                            const newGallery = [...formData.manufacturing.gallery];
-                                                            newGallery[index].image = e.target.value;
-                                                            setFormData({ ...formData, manufacturing: { ...formData.manufacturing, gallery: newGallery } });
-                                                        }}
-                                                        className="bg-black border-zinc-700 text-white"
-                                                    />
+                                                <div className="col-span-2 md:col-span-1">
+                                                    <div>
+                                                        <Label>Title</Label>
+                                                        <Input
+                                                            value={item.title}
+                                                            onChange={(e) => {
+                                                                const newGallery = [...formData.manufacturing.gallery];
+                                                                newGallery[index].title = e.target.value;
+                                                                setFormData({ ...formData, manufacturing: { ...formData.manufacturing, gallery: newGallery } });
+                                                            }}
+                                                            className="bg-black border-zinc-700 text-white"
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -330,41 +333,42 @@ export default function SettingsPage() {
                                     {formData.products?.featured?.map((prod: any, index: number) => (
                                         <div key={index} className="p-4 border border-zinc-800 rounded-lg bg-black/50">
                                             <div className="grid md:grid-cols-2 gap-4">
-                                                <div>
-                                                    <Label>Title</Label>
-                                                    <Input
-                                                        value={prod.title}
-                                                        onChange={(e) => {
-                                                            const newFeatured = [...formData.products.featured];
-                                                            newFeatured[index].title = e.target.value;
-                                                            setFormData({ ...formData, products: { ...formData.products, featured: newFeatured } });
-                                                        }}
-                                                        className="bg-black border-zinc-700 text-white"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <Label>Category</Label>
-                                                    <Input
-                                                        value={prod.category}
-                                                        onChange={(e) => {
-                                                            const newFeatured = [...formData.products.featured];
-                                                            newFeatured[index].category = e.target.value;
-                                                            setFormData({ ...formData, products: { ...formData.products, featured: newFeatured } });
-                                                        }}
-                                                        className="bg-black border-zinc-700 text-white"
-                                                    />
-                                                </div>
-                                                <div className="col-span-2">
-                                                    <Label>Image URL</Label>
-                                                    <Input
+                                                <div className="col-span-2 md:col-span-1">
+                                                    <Label className="mb-2 block">Product Image</Label>
+                                                    <ImageUpload
                                                         value={prod.image}
-                                                        onChange={(e) => {
+                                                        onChange={(val) => {
                                                             const newFeatured = [...formData.products.featured];
-                                                            newFeatured[index].image = e.target.value;
+                                                            newFeatured[index].image = val;
                                                             setFormData({ ...formData, products: { ...formData.products, featured: newFeatured } });
                                                         }}
-                                                        className="bg-black border-zinc-700 text-white"
                                                     />
+                                                </div>
+                                                <div className="col-span-2 md:col-span-1 space-y-4">
+                                                    <div>
+                                                        <Label>Title</Label>
+                                                        <Input
+                                                            value={prod.title}
+                                                            onChange={(e) => {
+                                                                const newFeatured = [...formData.products.featured];
+                                                                newFeatured[index].title = e.target.value;
+                                                                setFormData({ ...formData, products: { ...formData.products, featured: newFeatured } });
+                                                            }}
+                                                            className="bg-black border-zinc-700 text-white"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <Label>Category</Label>
+                                                        <Input
+                                                            value={prod.category}
+                                                            onChange={(e) => {
+                                                                const newFeatured = [...formData.products.featured];
+                                                                newFeatured[index].category = e.target.value;
+                                                                setFormData({ ...formData, products: { ...formData.products, featured: newFeatured } });
+                                                            }}
+                                                            className="bg-black border-zinc-700 text-white"
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
