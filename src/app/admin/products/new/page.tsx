@@ -222,6 +222,43 @@ export default function AddProductPage() {
                                 </Button>
                             </div>
 
+                            <div className="mt-4">
+                                <Label htmlFor="file-upload" className="cursor-pointer inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-zinc-900 hover:bg-zinc-800 hover:text-accent-foreground h-10 px-4 py-2 w-full border-dashed border-zinc-700 text-gray-400">
+                                    <span className="flex items-center gap-2">
+                                        <Plus className="h-4 w-4" /> Upload Images from Computer
+                                    </span>
+                                    <input
+                                        id="file-upload"
+                                        type="file"
+                                        multiple
+                                        accept="image/*"
+                                        className="hidden"
+                                        onChange={(e) => {
+                                            const files = e.target.files;
+                                            if (files && files.length > 0) {
+                                                Array.from(files).forEach(file => {
+                                                    if (file.size > 4 * 1024 * 1024) {
+                                                        alert(`File ${file.name} is too large (max 4MB)`);
+                                                        return;
+                                                    }
+                                                    const reader = new FileReader();
+                                                    reader.onloadend = () => {
+                                                        if (reader.result) {
+                                                            setFormData(prev => ({
+                                                                ...prev,
+                                                                images: [...prev.images, reader.result as string]
+                                                            }));
+                                                        }
+                                                    };
+                                                    reader.readAsDataURL(file);
+                                                });
+                                            }
+                                        }}
+                                    />
+                                </Label>
+                                <p className="text-xs text-gray-500 mt-1">Max 4MB per image. Images are stored directly in the database.</p>
+                            </div>
+
                             {/* Diamond Specific Fields */}
                             {formData.category === 'Diamond Jewellery' && (
                                 <div className="grid grid-cols-2 gap-6 mt-6 p-4 border border-zinc-800 rounded-lg bg-zinc-900/50">
