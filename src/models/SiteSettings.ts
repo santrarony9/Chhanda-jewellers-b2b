@@ -25,6 +25,10 @@ const SiteSettingsSchema = new Schema({
         type: String,
         default: '#',
     },
+    companyProfileUrl: {
+        type: String,
+        default: '',
+    },
     updatedAt: {
         type: Date,
         default: Date.now,

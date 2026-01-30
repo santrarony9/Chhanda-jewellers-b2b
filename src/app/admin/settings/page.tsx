@@ -17,7 +17,8 @@ export default function SettingsPage() {
         address: "",
         facebook: "",
         instagram: "",
-        whatsapp: ""
+        whatsapp: "",
+        companyProfileUrl: ""
     })
 
     useEffect(() => {
@@ -35,7 +36,8 @@ export default function SettingsPage() {
                     address: data.data.address || "",
                     facebook: data.data.facebook || "",
                     instagram: data.data.instagram || "",
-                    whatsapp: data.data.whatsapp || ""
+                    whatsapp: data.data.whatsapp || "",
+                    companyProfileUrl: data.data.companyProfileUrl || ""
                 })
             }
         } catch (error) {
@@ -153,6 +155,23 @@ export default function SettingsPage() {
                                         placeholder="+91..."
                                         className="bg-black border-zinc-700 text-white focus:border-primary"
                                     />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h3 className="text-xl font-medium text-white border-b border-zinc-800 pb-2">Resources</h3>
+                            <div className="grid gap-4">
+                                <div>
+                                    <Label>Company Profile Download URL (PDF)</Label>
+                                    <Input
+                                        name="companyProfileUrl"
+                                        value={formData.companyProfileUrl}
+                                        onChange={handleChange}
+                                        placeholder="https://example.com/profile.pdf"
+                                        className="bg-black border-zinc-700 text-white focus:border-primary"
+                                    />
+                                    <p className="text-xs text-gray-500 mt-1">Upload your PDF to a public location (e.g. Google Drive, S3, or public folder) and paste the link here.</p>
                                 </div>
                             </div>
                         </div>
