@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { motion } from "framer-motion"
 import { PencilRuler, Flame, Hammer, Gem, Search, PackageCheck } from "lucide-react"
 
@@ -46,37 +47,66 @@ export function ManufacturingWorkflow() {
                 </div>
 
                 <div className="relative">
-                    {/* Vertical Line for Mobile */}
-                    <div className="absolute left-8 top-0 bottom-0 w-px bg-surface-light md:hidden" />
-
-                    <div className="space-y-12 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-32 md:gap-y-24 relative">
-                        {/* Center Line for Desktop */}
+                    <div className="relative">
+                        {/* Central Line (Desktop) */}
                         <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-surface-light -translate-x-1/2" />
 
-                        {steps.map((step, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
-                                viewport={{ once: true }}
-                                className={`relative flex gap-6 md:block ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12 md:mt-24'}`}
-                            >
-                                {/* Icon Circle */}
-                                <div className={`
-                    absolute top-0 md:top-0 h-16 w-16 rounded-full bg-background border-2 border-primary flex items-center justify-center z-10
-                    ${index % 2 === 0 ? 'md:-right-[6rem]' : 'md:-left-[6rem]'}
-                    left-0 md:left-auto
-                `}>
-                                    <step.icon className="h-8 w-8 text-primary" />
-                                </div>
+                        <div className="relative grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-x-8 gap-y-16">
+                            {steps.map((step, index) => (
+                                <React.Fragment key={index}>
+                                    {/* Left Column Content (Even Index - Desktop Only) */}
+                                    <div className={`hidden md:block md:text-right ${index % 2 === 0 ? 'visible' : 'invisible'}`}>
+                                        <motion.div
+                                            initial={{ opacity: 0, x: -20 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: index * 0.1 }}
+                                        >
+                                            <h3 className="text-2xl font-serif text-white mb-3">{step.title}</h3>
+                                            <p className="text-gray-400 leading-relaxed max-w-sm ml-auto">{step.desc}</p>
+                                        </motion.div>
+                                    </div>
 
-                                <div className="pl-20 md:pl-0">
-                                    <h4 className="text-xl font-bold text-white mb-2">{step.title}</h4>
-                                    <p className="text-gray-400 leading-relaxed">{step.desc}</p>
-                                </div>
-                            </motion.div>
-                        ))}
+                                    {/* Center Icon Column */}
+                                    <div className="flex justify-center items-start relative z-10">
+                                        <motion.div
+                                            initial={{ scale: 0, opacity: 0 }}
+                                            whileInView={{ scale: 1, opacity: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: index * 0.1 }}
+                                            className="h-16 w-16 rounded-full bg-background border-2 border-primary flex items-center justify-center shrink-0 z-20"
+                                        >
+                                            <step.icon className="h-8 w-8 text-primary" />
+                                        </motion.div>
+                                    </div>
+
+                                    {/* Right Column Content (Odd Index - Desktop Only) */}
+                                    <div className={`hidden md:block md:text-left ${index % 2 !== 0 ? 'visible' : 'invisible'}`}>
+                                        <motion.div
+                                            initial={{ opacity: 0, x: 20 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: index * 0.1 }}
+                                        >
+                                            <h3 className="text-2xl font-serif text-white mb-3">{step.title}</h3>
+                                            <p className="text-gray-400 leading-relaxed max-w-sm mr-auto">{step.desc}</p>
+                                        </motion.div>
+                                    </div>
+
+                                    {/* Mobile Content (Below Icon) */}
+                                    <div className="md:hidden col-span-1 text-center -mt-8 mb-12">
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 10 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                        >
+                                            <h3 className="text-xl font-serif text-white mb-2">{step.title}</h3>
+                                            <p className="text-gray-400 text-sm leading-relaxed px-4">{step.desc}</p>
+                                        </motion.div>
+                                    </div>
+                                </React.Fragment>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
