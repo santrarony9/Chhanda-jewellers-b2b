@@ -6,6 +6,7 @@ import { Check, Download, ArrowLeft, AlertCircle } from "lucide-react"
 import dbConnect from "@/lib/db"
 import Product from "@/models/Product"
 import { notFound } from "next/navigation"
+import { formatWeight } from "@/lib/utils"
 
 // Helper to get product
 async function getProduct(id: string) {
@@ -99,6 +100,20 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
                                     <>
                                         <div className="text-gray-400">Certification</div>
                                         <div className="text-white font-medium">{product.certification}</div>
+                                    </>
+                                )}
+
+                                {product.diamondWeight > 0 && (
+                                    <>
+                                        <div className="text-gray-400">Diamond Weight</div>
+                                        <div className="text-white font-medium">{formatWeight(product.diamondWeight)}</div>
+                                    </>
+                                )}
+
+                                {product.otherStoneWeight > 0 && (
+                                    <>
+                                        <div className="text-gray-400">Other Stone Weight</div>
+                                        <div className="text-white font-medium">{formatWeight(product.otherStoneWeight)}</div>
                                     </>
                                 )}
 

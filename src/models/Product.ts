@@ -56,6 +56,14 @@ const ProductSchema = new Schema({
         type: String, // e.g. 'VVS-EF', 'VS-GH'
         required: false,
     },
+    diamondWeight: {
+        type: Number, // Stored in carat
+        required: false,
+    },
+    otherStoneWeight: {
+        type: Number, // Stored in carat
+        required: false,
+    },
     certification: {
         type: String, // e.g. 'IGI', 'GIA'
         required: false,

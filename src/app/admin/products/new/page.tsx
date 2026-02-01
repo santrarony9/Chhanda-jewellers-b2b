@@ -24,6 +24,8 @@ export default function AddProductPage() {
         images: [] as string[],
         isFeatured: false,
         diamondQuality: "",
+        diamondWeight: "" as number | string,
+        otherStoneWeight: "" as number | string,
     });
 
     const categories = ["Gold Jewellery", "Diamond Jewellery", "Platinum", "Gemstones", "Coins", "Custom"];
@@ -206,6 +208,35 @@ export default function AddProductPage() {
                                 onChange={handleInputChange}
                                 className="bg-black border-zinc-700 focus:border-primary w-1/3"
                             />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <Label>Diamond Weight (Carat)</Label>
+                                <Input
+                                    name="diamondWeight"
+                                    type="number"
+                                    step="0.01"
+                                    value={formData.diamondWeight}
+                                    onChange={handleInputChange}
+                                    placeholder="e.g. 1.25"
+                                    className="bg-black border-zinc-700 focus:border-primary"
+                                />
+                                <p className="text-xs text-gray-500">Enter in carats (e.g., 1.25 for 1 Carat 25 Cent)</p>
+                            </div>
+                            <div className="space-y-2">
+                                <Label>Other Stone Weight (Carat)</Label>
+                                <Input
+                                    name="otherStoneWeight"
+                                    type="number"
+                                    step="0.01"
+                                    value={formData.otherStoneWeight}
+                                    onChange={handleInputChange}
+                                    placeholder="e.g. 0.50"
+                                    className="bg-black border-zinc-700 focus:border-primary"
+                                />
+                                <p className="text-xs text-gray-500">Enter in carats (e.g., 0.50 for 50 Cent)</p>
+                            </div>
                         </div>
 
                         <div className="space-y-2">
