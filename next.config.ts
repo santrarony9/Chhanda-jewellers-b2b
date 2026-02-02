@@ -4,7 +4,6 @@ const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
   images: {
-    domains: ['res.cloudinary.com'], // Allow external images if needed in future
     remotePatterns: [
       {
         protocol: 'https',
