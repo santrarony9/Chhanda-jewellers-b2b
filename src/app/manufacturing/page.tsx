@@ -7,7 +7,8 @@ import { BulkEnquiryCTA } from "@/components/home/bulk-enquiry-cta"
 import dbConnect from "@/lib/db"
 import SiteSettings from "@/models/SiteSettings"
 
-export const revalidate = 30;
+// Revalidate every 24 hours (86400 seconds) to prevent Vercel ISR Write limit exhaustion
+export const revalidate = 86400;
 
 export const metadata = {
     title: "Manufacturing Process | Chhanda Jewellers - B2B Production",

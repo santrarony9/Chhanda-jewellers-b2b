@@ -8,8 +8,8 @@ import { BulkEnquiryCTA } from "@/components/home/bulk-enquiry-cta"
 import dbConnect from "@/lib/db"
 import SiteSettings from "@/models/SiteSettings"
 
-// Revalidate every 30 seconds for better performance than force-dynamic
-export const revalidate = 30;
+// Revalidate every 24 hours (86400 seconds) to prevent Vercel ISR Write limit exhaustion
+export const revalidate = 86400;
 
 async function getSiteContent() {
   try {

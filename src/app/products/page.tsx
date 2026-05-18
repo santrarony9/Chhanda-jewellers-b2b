@@ -6,7 +6,8 @@ import { FeaturedCollection } from "@/components/products/featured-collection"
 import dbConnect from "@/lib/db"
 import SiteSettings from "@/models/SiteSettings"
 
-export const revalidate = 30;
+// Revalidate every 24 hours (86400 seconds) to prevent Vercel ISR Write limit exhaustion
+export const revalidate = 86400;
 
 export const metadata = {
     title: "Product Catalog | Chhanda Jewellers - B2B Collection",
