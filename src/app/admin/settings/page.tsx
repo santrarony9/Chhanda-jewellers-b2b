@@ -103,7 +103,7 @@ export default function SettingsPage() {
 
     const fetchSettings = async () => {
         try {
-            const res = await fetch("/api/settings")
+            const res = await fetch(`/api/settings?t=${Date.now()}`)
             const data = await res.json()
             if (data.success) {
                 // Ensure arrays have default lengths if empty so UI renders

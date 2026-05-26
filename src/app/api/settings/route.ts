@@ -4,6 +4,8 @@ import SiteSettings from '@/models/SiteSettings';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
+export const dynamic = 'force-dynamic';
+
 // GET: Fetch settings (Public)
 export async function GET() {
     try {
