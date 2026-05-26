@@ -106,6 +106,15 @@ export default function SettingsPage() {
             const res = await fetch("/api/settings")
             const data = await res.json()
             if (data.success) {
+                // Ensure arrays have default lengths if empty so UI renders
+                const defaultCategories = Array(4).fill({ title: "", subtitle: "", href: "", image: "/founder.jpg" });
+                const defaultGallery = Array(5).fill({ title: "", span: "", image: "/founder.jpg" });
+                const defaultFeatured = Array(3).fill({ id: "", title: "", category: "", image: "/founder.jpg", price: "" });
+
+                const fetchedHome = data.data.home || {};
+                const fetchedMfg = data.data.manufacturing || {};
+                const fetchedProd = data.data.products || {};
+
                 setFormData({
                     phone: data.data.phone || "",
                     email: data.data.email || "",
@@ -114,11 +123,11 @@ export default function SettingsPage() {
                     instagram: data.data.instagram || "",
                     whatsapp: data.data.whatsapp || "",
                     companyProfileUrl: data.data.companyProfileUrl || "",
-                    home: data.data.home || { 
-                        heroImage: "", 
-                        categories: [],
-                        manufacturingHighlight: {
-                            founderImage: "",
+                    home: {
+                        heroImage: fetchedHome.heroImage || "/founder.jpg",
+                        categories: fetchedHome.categories?.length > 0 ? fetchedHome.categories : defaultCategories,
+                        manufacturingHighlight: fetchedHome.manufacturingHighlight || {
+                            founderImage: "/founder.jpg",
                             founderName: "",
                             founderTitle: "",
                             yearsOfMastery: "",
@@ -127,8 +136,12 @@ export default function SettingsPage() {
                             description: ""
                         }
                     },
-                    manufacturing: data.data.manufacturing || { gallery: [] },
-                    products: data.data.products || { featured: [] }
+                    manufacturing: {
+                        gallery: fetchedMfg.gallery?.length > 0 ? fetchedMfg.gallery : defaultGallery
+                    },
+                    products: {
+                        featured: fetchedProd.featured?.length > 0 ? fetchedProd.featured : defaultFeatured
+                    }
                 })
             }
         } catch (error) {
