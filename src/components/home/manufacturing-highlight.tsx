@@ -5,7 +5,19 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { Check, MoveRight } from "lucide-react"
 
-export function ManufacturingHighlight() {
+interface ManufacturingHighlightProps {
+    data?: {
+        founderImage?: string
+        founderName?: string
+        founderTitle?: string
+        yearsOfMastery?: string
+        heading?: string
+        subheading?: string
+        description?: string
+    }
+}
+
+export function ManufacturingHighlight({ data }: ManufacturingHighlightProps) {
     return (
         <section className="py-32 bg-surface-dark relative border-t border-white/5">
             <div className="container mx-auto px-4">
@@ -16,8 +28,8 @@ export function ManufacturingHighlight() {
                         <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden group">
                             {/* Founder Image */}
                             <img
-                                src="/founder.jpg"
-                                alt="Mr. Hemanta Koley - Chairman, Chhanda Jewellers"
+                                src={data?.founderImage || "/founder.jpg"}
+                                alt={`${data?.founderName || "Mr. Hemanta Koley"} - ${data?.founderTitle || "Chairman"}, Chhanda Jewellers`}
                                 className="h-full w-full object-cover object-top"
                             />
                             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black to-transparent z-10" />
@@ -28,9 +40,9 @@ export function ManufacturingHighlight() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="text-2xl md:text-3xl font-serif font-bold text-white mb-1">Mr. Hemanta Koley</div>
-                                <div className="text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm font-medium mb-3 md:mb-4">Chairman</div>
-                                <div className="text-4xl md:text-5xl font-serif font-bold text-white/80">25+</div>
+                                <div className="text-2xl md:text-3xl font-serif font-bold text-white mb-1">{data?.founderName || "Mr. Hemanta Koley"}</div>
+                                <div className="text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm font-medium mb-3 md:mb-4">{data?.founderTitle || "Chairman"}</div>
+                                <div className="text-4xl md:text-5xl font-serif font-bold text-white/80">{data?.yearsOfMastery || "25+"}</div>
                                 <div className="text-gray-400 uppercase tracking-[0.15em] md:tracking-[0.2em] text-[10px] md:text-xs font-medium">Years of Mastery</div>
                             </motion.div>
                         </div>
@@ -51,14 +63,12 @@ export function ManufacturingHighlight() {
                                 The Process
                             </h2>
                             <h3 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-tight text-balance">
-                                Precision Casting meets <br />
-                                <span className="text-gray-500 italic">Bengal's Artistry</span>
+                                {data?.heading || "Precision Casting meets"} <br />
+                                <span className="text-gray-500 italic">{data?.subheading || "Bengal's Artistry"}</span>
                             </h3>
 
                             <p className="text-gray-400 text-lg mb-10 leading-relaxed font-light">
-                                Our Singur facility is equipped with advanced Vacuum Casting technology and Laser Soldering units.
-                                Yet, we believe the soul of jewellery lies in the hands of the artisan. We combine automation with unmatched
-                                hand-finishing.
+                                {data?.description || "Our Singur facility is equipped with advanced Vacuum Casting technology and Laser Soldering units. Yet, we believe the soul of jewellery lies in the hands of the artisan. We combine automation with unmatched hand-finishing."}
                             </p>
 
                             <ul className="grid grid-cols-1 gap-6 mb-12">

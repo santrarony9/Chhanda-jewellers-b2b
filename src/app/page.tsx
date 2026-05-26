@@ -29,6 +29,7 @@ export default async function Home() {
   const content = await getSiteContent();
   const heroImage = content?.home?.heroImage;
   const categories = content?.home?.categories;
+  const manufacturingHighlight = content?.home?.manufacturingHighlight;
 
   return (
     <main className="bg-background min-h-screen">
@@ -36,7 +37,7 @@ export default async function Home() {
       <Hero heroImage={heroImage} />
       <TrustBadges />
       <FeaturedCategories categories={categories} />
-      <ManufacturingHighlight />
+      <ManufacturingHighlight data={manufacturingHighlight} />
       <BulkEnquiryCTA />
       <Footer />
     </main>

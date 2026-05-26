@@ -80,6 +80,15 @@ const SiteSettingsSchema = new Schema({
                     delay: 0.3
                 }
             ]
+        },
+        manufacturingHighlight: {
+            founderImage: { type: String, default: '/founder.jpg' },
+            founderName: { type: String, default: 'Mr. Hemanta Koley' },
+            founderTitle: { type: String, default: 'Chairman' },
+            yearsOfMastery: { type: String, default: '25+' },
+            heading: { type: String, default: 'Precision Casting meets' },
+            subheading: { type: String, default: 'Bengal\'s Artistry' },
+            description: { type: String, default: 'Our Singur facility is equipped with advanced Vacuum Casting technology and Laser Soldering units. Yet, we believe the soul of jewellery lies in the hands of the artisan. We combine automation with unmatched hand-finishing.' }
         }
     },
     // Manufacturing Page Content

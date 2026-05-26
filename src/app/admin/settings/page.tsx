@@ -43,6 +43,15 @@ interface SettingsData {
     home: {
         heroImage: string
         categories: Category[]
+        manufacturingHighlight: {
+            founderImage: string
+            founderName: string
+            founderTitle: string
+            yearsOfMastery: string
+            heading: string
+            subheading: string
+            description: string
+        }
     }
     manufacturing: {
         gallery: GalleryItem[]
@@ -66,7 +75,16 @@ export default function SettingsPage() {
         companyProfileUrl: "",
         home: {
             heroImage: "",
-            categories: []
+            categories: [],
+            manufacturingHighlight: {
+                founderImage: "",
+                founderName: "",
+                founderTitle: "",
+                yearsOfMastery: "",
+                heading: "",
+                subheading: "",
+                description: ""
+            }
         },
         manufacturing: {
             gallery: []
@@ -96,7 +114,19 @@ export default function SettingsPage() {
                     instagram: data.data.instagram || "",
                     whatsapp: data.data.whatsapp || "",
                     companyProfileUrl: data.data.companyProfileUrl || "",
-                    home: data.data.home || { heroImage: "", categories: [] },
+                    home: data.data.home || { 
+                        heroImage: "", 
+                        categories: [],
+                        manufacturingHighlight: {
+                            founderImage: "",
+                            founderName: "",
+                            founderTitle: "",
+                            yearsOfMastery: "",
+                            heading: "",
+                            subheading: "",
+                            description: ""
+                        }
+                    },
                     manufacturing: data.data.manufacturing || { gallery: [] },
                     products: data.data.products || { featured: [] }
                 })
@@ -277,6 +307,69 @@ export default function SettingsPage() {
                                             </div>
                                         </div>
                                     ))}
+                                </div>
+                            </div>
+
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-medium text-white">Manufacturing Highlight (Founder Section)</h3>
+                                <div className="p-4 border border-zinc-800 rounded-lg bg-black/50 space-y-6">
+                                    <div>
+                                        <Label className="mb-2 block">Founder/Chairman Image</Label>
+                                        <ImageUpload
+                                            value={formData.home?.manufacturingHighlight?.founderImage || ''}
+                                            onChange={(val) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, founderImage: val } } })}
+                                        />
+                                    </div>
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <Label>Name</Label>
+                                            <Input
+                                                value={formData.home?.manufacturingHighlight?.founderName || ''}
+                                                onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, founderName: e.target.value } } })}
+                                                className="bg-black border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                        <div>
+                                            <Label>Title</Label>
+                                            <Input
+                                                value={formData.home?.manufacturingHighlight?.founderTitle || ''}
+                                                onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, founderTitle: e.target.value } } })}
+                                                className="bg-black border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                        <div>
+                                            <Label>Years of Mastery (e.g. 25+)</Label>
+                                            <Input
+                                                value={formData.home?.manufacturingHighlight?.yearsOfMastery || ''}
+                                                onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, yearsOfMastery: e.target.value } } })}
+                                                className="bg-black border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                        <div>
+                                            <Label>Heading</Label>
+                                            <Input
+                                                value={formData.home?.manufacturingHighlight?.heading || ''}
+                                                onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, heading: e.target.value } } })}
+                                                className="bg-black border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                        <div>
+                                            <Label>Subheading (Italic Text)</Label>
+                                            <Input
+                                                value={formData.home?.manufacturingHighlight?.subheading || ''}
+                                                onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, subheading: e.target.value } } })}
+                                                className="bg-black border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <Label>Description</Label>
+                                            <Input
+                                                value={formData.home?.manufacturingHighlight?.description || ''}
+                                                onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, description: e.target.value } } })}
+                                                className="bg-black border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
