@@ -30,7 +30,7 @@ export async function Footer() {
                             </span>
                         </Link>
                         <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-                            Legacy of excellence in Gold & Diamond Jewellery manufacturing.
+                            Legacy of excellence in Diamond Jewellery manufacturing.
                             Partnering with retailers across India for premium bulk supply and custom craftsmanship.
                         </p>
                         <div className="flex gap-4">
@@ -66,8 +66,7 @@ export async function Footer() {
                     <div>
                         <h3 className="text-primary font-serif text-lg mb-6">Products</h3>
                         <ul className="space-y-4">
-                            <FooterLink href="/products?cat=Gold Jewellery">Gold Jewellery (22K/18K)</FooterLink>
-                            <FooterLink href="/products?cat=Diamond Jewellery">Diamond Jewellery</FooterLink>
+                            <FooterLink href="/products?cat=Diamond Jewellery">Diamond Jewellery (18K, 14K, 9K)</FooterLink>
                             <FooterLink href="/products?cat=Bridal">Gift Collection</FooterLink>
                             <FooterLink href="/products?cat=Lightweight">Lightweight Daily Wear</FooterLink>
                             <FooterLink href="/products?cat=Custom">Custom Orders</FooterLink>
@@ -79,15 +78,15 @@ export async function Footer() {
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3 text-gray-400 text-sm">
                                 <MapPin className="h-5 w-5 text-primary shrink-0" />
-                                <span>{settings.address || 'Singur, Hooghly, West Bengal, India - 712409'}</span>
+                                <span>{settings.address || '18, HariramGoenka Street, Burabuzar, Kolkata, India. pin code - 700007'}</span>
                             </li>
                             <li className="flex items-center gap-3 text-gray-400 text-sm">
                                 <Phone className="h-5 w-5 text-primary shrink-0" />
-                                <span>{settings.phone || '+91 98765 43210'}</span>
+                                <span>{settings.phone || '8981420463'}</span>
                             </li>
                             <li className="flex items-center gap-3 text-gray-400 text-sm">
                                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                                <span>{settings.email || 'contact@chhandajewellers.com'}</span>
+                                <span>{settings.email || 'chhandajewellers@gmail.com'}</span>
                             </li>
                         </ul>
                     </div>

@@ -2,8 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 
-const categories = ["All Products", "Gold Jewellery", "Diamond Jewellery", "Bridal Set", "Lightweight Daily", "Kids Collection", "Men's Collection"]
-const purity = ["22K (916)", "18K (750)", "14K (585)"]
+const categories = ["All Products", "Diamond Jewellery (18K, 14K, 9K)", "Bridal Set", "Lightweight Daily", "Kids Collection", "Men's Collection"]
+const purity = ["18K (750)", "14K (585)", "9K (375)"]
 const weight = ["Under 5g", "5g - 10g", "10g - 20g", "20g - 50g", "50g+"]
 
 export function ProductFilters() {

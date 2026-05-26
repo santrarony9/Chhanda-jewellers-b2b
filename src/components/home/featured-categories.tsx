@@ -8,9 +8,9 @@ import { motion } from "framer-motion"
 // Fallback data if no props provided
 const defaultCategories = [
     {
-        title: "100% Natural Jewellery",
-        subtitle: "22K & 18K Hallmarked",
-        href: "/products?cat=gold",
+        title: "Diamond Jewellery (18K, 14K, 9K)",
+        subtitle: "Hallmarked Diamond Jewellery",
+        href: "/products?cat=diamond",
         gradient: "from-[#D4AF37]/30 to-[#AA8C2C]/5", // Gold
         visual: "/cat-natural-gold-new.png",
         colSpan: "md:col-span-2",

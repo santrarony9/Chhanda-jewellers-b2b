@@ -24,7 +24,7 @@ export function CompanyLegacy() {
                         viewport={{ once: true }}
                         className="text-4xl md:text-5xl font-serif text-white mb-8"
                     >
-                        A Legacy of Pure Gold & Trust
+                        A Legacy of Purity & Trust
                     </motion.h3>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -33,7 +33,7 @@ export function CompanyLegacy() {
                         viewport={{ once: true }}
                         className="text-gray-300 text-lg leading-relaxed"
                     >
-                        Chhanda Jewellers began as a humble workshop in Singur with a singular vision: to create jewellery that is as pure in quality as it is beautiful in design. Over three decades, we have evolved from a local jeweller to a premier B2B manufacturer, supplying retailers and wholesalers across West Bengal and beyond with BIS Hallmarked gold and certified diamond jewellery.
+                        Chhanda Jewellers began as a humble workshop in Singur with a singular vision: to create jewellery that is as pure in quality as it is beautiful in design. Over three decades, we have evolved from a local jeweller to a premier B2B manufacturer, supplying retailers and wholesalers across West Bengal and beyond with certified diamond jewellery.
                     </motion.p>
                 </div>
 

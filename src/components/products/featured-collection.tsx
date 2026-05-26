@@ -22,7 +22,7 @@ const defaultProducts = [
     },
     {
         id: "feat-3",
-        title: "Pearl & Gold Nath",
+        title: "Pearl & Diamond Nath",
         category: "Traditional Wear",
         image: "/prod-featured-3.png",
         price: "Enquire for Price"

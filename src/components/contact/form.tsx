@@ -140,7 +140,7 @@ export function ContactForm() {
                             required
                             type="tel"
                             className="w-full bg-background/50 border border-gray-700 rounded-md p-3 text-white focus:border-primary focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all placeholder:text-gray-600"
-                            placeholder="+91 98765 43210"
+                            placeholder="+91 8981420463"
                         />
                     </div>
                     <div className="space-y-2">
@@ -187,7 +187,7 @@ export function ContactForm() {
                 <div className="space-y-2">
                     <label className="text-sm text-gray-400 font-medium">Product Interest *</label>
                     <div className="flex gap-4 flex-wrap bg-background/30 p-4 rounded-lg border border-gray-800">
-                        {["Gold Jewellery", "Diamond Jewellery", "Loose Diamonds", "Custom Manufacturing"].map((item, i) => (
+                        {["Diamond Jewellery (18K, 14K, 9K)", "Custom Manufacturing"].map((item, i) => (
                             <label key={i} className="flex items-center gap-2 cursor-pointer group select-none">
                                 <div className="relative flex items-center">
                                     <input

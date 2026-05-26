@@ -61,7 +61,7 @@ export function Hero({ heroImage }: HeroProps) {
                                     transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
                                     className="bg-gradient-to-r from-primary to-amber-200 bg-clip-text text-transparent bg-no-repeat bg-left-bottom"
                                 >
-                                    Pure Gold
+                                    Diamond Jewellery
                                 </motion.span>
                                 {/* Decorative underline */}
                                 <motion.svg
@@ -125,7 +125,7 @@ export function Hero({ heroImage }: HeroProps) {
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
                                 <Image
                                     src={heroImage || "/hero-jewellery-v3.png"}
-                                    alt="Exquisite Gold Jewellery"
+                                    alt="Exquisite Diamond Jewellery"
                                     fill
                                     className="object-contain drop-shadow-2xl"
                                     sizes="(max-width: 1200px) 100vw, 50vw"

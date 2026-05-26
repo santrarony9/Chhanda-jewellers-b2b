@@ -11,7 +11,7 @@ export const revalidate = 86400;
 
 export const metadata = {
     title: "Product Catalog | Chhanda Jewellers - B2B Collection",
-    description: "Browse our exclusive collection of Gold and Diamond jewellery tailored for retail partners. Bulk enquiry available.",
+    description: "Browse our exclusive collection of Diamond jewellery tailored for retail partners. Bulk enquiry available.",
 }
 
 async function getSiteContent() {
@@ -37,7 +37,7 @@ export default async function ProductsPage() {
             <section className="bg-surface-dark py-12 border-b border-surface-light">
                 <div className="container mx-auto px-4">
                     <h1 className="text-3xl md:text-5xl font-serif text-white font-bold mb-2">Our Collection</h1>
-                    <p className="text-gray-400">Exclusive B2B Designs • Gold (22K/18K) • Certified Diamonds</p>
+                    <p className="text-gray-400">Exclusive B2B Designs • Diamond (18K, 14K, 9K) • Certified Diamonds</p>
                 </div>
             </section>
 

@@ -15,7 +15,7 @@ export function QualityCertification() {
                         </div>
                         <h3 className="text-xl font-bold text-white mb-3">BIS Hallmark</h3>
                         <p className="text-gray-400 text-sm">
-                            Every piece of gold jewellery is BIS Hallmarked (HUID), guaranteeing the purity of 22K (916) or 18K (750) gold as per government standards.
+                            Every piece of jewellery is BIS Hallmarked (HUID), guaranteeing the purity of 18K (750), 14K (585) or 9K (375) metal as per government standards.
                         </p>
                     </div>
 

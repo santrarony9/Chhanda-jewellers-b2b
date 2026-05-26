@@ -54,7 +54,7 @@ export function PartnerContent() {
 
                             <div className="space-y-2">
                                 <label className="text-sm text-gray-400 font-medium">Phone</label>
-                                <input className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:border-primary focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all placeholder:text-gray-600" placeholder="+91 98765 43210" />
+                                <input className="w-full bg-white/5 border border-white/10 rounded-md p-3 text-white focus:border-primary focus:ring-1 focus:ring-primary/50 focus:outline-none transition-all placeholder:text-gray-600" placeholder="+91 8981420463" />
                             </div>
 
                             <div className="space-y-2">

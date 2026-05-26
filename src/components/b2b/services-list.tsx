@@ -8,7 +8,7 @@ const services = [
     {
         icon: Truck,
         title: "Bulk Wholesale Supply",
-        desc: "Direct supply to retailers with competitive wholesale pricing. Order in bulk across categories (Gold, Diamond)."
+        desc: "Direct supply to retailers with competitive wholesale pricing. Order in bulk across categories (Diamond)."
     },
     {
         icon: Copy,

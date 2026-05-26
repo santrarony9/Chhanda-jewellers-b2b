@@ -55,7 +55,7 @@ export default function PrivacyPolicyPage() {
                         <h2 className="text-2xl text-white font-serif mb-4">5. Contact Us</h2>
                         <p>
                             If you have any questions about this privacy policy or our privacy practices, please contact us at: <br />
-                            <span className="text-primary mt-2 block">contact@chhandajewellers.com</span>
+                            <span className="text-primary mt-2 block">chhandajewellers@gmail.com</span>
                         </p>
                     </section>
                 </div>

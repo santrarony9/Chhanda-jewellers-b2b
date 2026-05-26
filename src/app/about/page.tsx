@@ -7,7 +7,7 @@ import { BulkEnquiryCTA } from "@/components/home/bulk-enquiry-cta"
 
 export const metadata = {
     title: "About Us | Chhanda Jewellers - Manufacturing Excellence",
-    description: "Learn about Chhanda Jewellers, our legacy in Singur, and our commitment to quality gold and diamond jewellery manufacturing.",
+    description: "Learn about Chhanda Jewellers, our legacy in Singur, and our commitment to quality diamond jewellery manufacturing.",
 }
 
 export default function AboutPage() {

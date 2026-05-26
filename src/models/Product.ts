@@ -13,7 +13,7 @@ const ProductSchema = new Schema({
     category: {
         type: String,
         required: true,
-        enum: ['Gold Jewellery', 'Diamond Jewellery', 'Platinum', 'Gemstones', 'Coins', 'Custom'],
+        enum: ['Diamond Jewellery', 'Platinum', 'Gemstones', 'Coins', 'Custom'],
     },
     variety: {
         type: String,
@@ -22,8 +22,8 @@ const ProductSchema = new Schema({
     purity: {
         type: String,
         required: true,
-        enum: ['14K', '18K', '22K', '24K', 'Platinum 950', 'Sterling Silver'],
-        default: '22K'
+        enum: ['9K', '14K', '18K', 'Platinum 950', 'Sterling Silver'],
+        default: '18K'
     },
     material: {
         type: String,

@@ -132,7 +132,7 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
                             </div>
                             <div className="flex items-center gap-3 text-gray-300 text-sm">
                                 <Check className="h-4 w-4 text-green-500" />
-                                <span>Customization Available (Gold Color/Weight)</span>
+                                <span>Customization Available (Metal Color/Weight)</span>
                             </div>
                             <div className="flex items-center gap-3 text-gray-300 text-sm">
                                 <Check className="h-4 w-4 text-green-500" />

@@ -42,7 +42,7 @@ export default function TermsConditionsPage() {
                     <section>
                         <h2 className="text-2xl text-white font-serif mb-4">4. Pricing & Payment</h2>
                         <p>
-                            Prices for Gold and Diamond products fluctuate based on current market rates (e.g., MCX Gold Rate).
+                            Prices for Diamond and metal products fluctuate based on current market rates (e.g., MCX Rate).
                             Final invoice value will be calculated based on the metal rate on the date of booking/delivery as per agreed terms.
                             Payment terms for wholesale partners are strictly as per the agreed invoices.
                         </p>

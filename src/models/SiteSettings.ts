@@ -3,15 +3,15 @@ import { Schema, model, models } from 'mongoose';
 const SiteSettingsSchema = new Schema({
     phone: {
         type: String,
-        default: '+91 98765 43210',
+        default: '+91 8981420463',
     },
     email: {
         type: String,
-        default: 'contact@chhandajewellers.com',
+        default: 'chhandajewellers@gmail.com',
     },
     address: {
         type: String,
-        default: 'Singur, Hooghly, West Bengal, India - 712409',
+        default: '18, HariramGoenka Street, Burabuzar, Kolkata, India. pin code - 700007',
     },
     facebook: {
         type: String,
@@ -44,9 +44,9 @@ const SiteSettingsSchema = new Schema({
             }],
             default: [
                 {
-                    title: "100% Natural Jewellery",
-                    subtitle: "22K & 18K Hallmarked",
-                    href: "/products?cat=gold",
+                    title: "Diamond Jewellery (18K, 14K, 9K)",
+                    subtitle: "Hallmarked Diamond Jewellery",
+                    href: "/products?cat=diamond",
                     gradient: "from-[#D4AF37]/30 to-[#AA8C2C]/5",
                     image: "/cat-natural-gold-new.png",
                     colSpan: "md:col-span-2",
@@ -126,7 +126,7 @@ const SiteSettingsSchema = new Schema({
                 },
                 {
                     id: "feat-3",
-                    title: "Pearl & Gold Nath",
+                    title: "Pearl & Diamond Nath",
                     category: "Traditional Wear",
                     image: "/prod-featured-3.png",
                     price: "Enquire for Price"

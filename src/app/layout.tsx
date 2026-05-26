@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  title: "Chhanda Jewellers | Gold & Diamond Jewellery Manufacturer",
+  title: "Chhanda Jewellers | Diamond Jewellery Manufacturer",
   description: "Premier B2B Jewellery Manufacturer in Singur, West Bengal. Bulk supply, OEM, and custom designs.",
   icons: {
     icon: '/icon.png',

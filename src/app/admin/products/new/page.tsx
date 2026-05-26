@@ -16,10 +16,10 @@ export default function AddProductPage() {
         title: "",
         description: "",
         price: "" as number | string,
-        category: "Gold Jewellery",
+        category: "Diamond Jewellery",
         variety: "",
-        purity: "22K",
-        material: "Gold",
+        purity: "18K",
+        material: "Diamond with Gold",
         weight: "",
         images: [] as string[],
         isFeatured: false,
@@ -28,8 +28,8 @@ export default function AddProductPage() {
         otherStoneWeight: "" as number | string,
     });
 
-    const categories = ["Gold Jewellery", "Diamond Jewellery", "Platinum", "Gemstones", "Coins", "Custom"];
-    const purities = ["24K", "22K", "18K", "14K", "Platinum 950", "Sterling Silver"];
+    const categories = ["Diamond Jewellery", "Platinum", "Gemstones", "Coins", "Custom"];
+    const purities = ["18K", "14K", "9K", "Platinum 950", "Sterling Silver"];
 
     // Expanded Variety List (Applicable to multiple categories)
     const varieties = [
@@ -111,7 +111,7 @@ export default function AddProductPage() {
                                     name="material"
                                     value={formData.material}
                                     onChange={handleInputChange}
-                                    placeholder="e.g. Yellow Gold"
+                                    placeholder="e.g. 18K Gold with Diamond"
                                     required
                                     className="bg-black border-zinc-700 focus:border-primary"
                                 />

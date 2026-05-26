@@ -36,7 +36,7 @@ export function B2BInfo() {
                                 </div>
                                 <div>
                                     <h4 className="text-white font-bold text-lg">Transparent Pricing</h4>
-                                    <p className="text-gray-400">Wholesale pricing linked to real-time gold rates plus fixed making charges.</p>
+                                    <p className="text-gray-400">Wholesale pricing linked to real-time metal rates plus fixed making charges.</p>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ export function B2BInfo() {
                             Looking to source premium Bengali craftsmanship for your showroom? Let's discuss your requirements.
                         </p>
                         <div className="space-y-4 text-sm text-gray-400">
-                            <p><strong className="text-white">Gold Rate:</strong> Real-time MCX based booking</p>
+                            <p><strong className="text-white">Metal Rate:</strong> Real-time MCX based booking</p>
                             <p><strong className="text-white">Payment:</strong> Advance + Delivery (RTGS/NEFT)</p>
                             <p><strong className="text-white">Delivery:</strong> Insured Logistics Pan-India</p>
                         </div>

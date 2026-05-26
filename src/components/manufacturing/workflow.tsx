@@ -13,7 +13,7 @@ const steps = [
     {
         icon: Flame,
         title: "2. Casting",
-        desc: "Using lost-wax casting with advanced inductothermy machines for flaw-free gold base structures."
+        desc: "Using lost-wax casting with advanced inductothermy machines for flaw-free metal base structures."
     },
     {
         icon: Hammer,

@@ -18,24 +18,31 @@ export async function ContactInfo() {
                 <div className="space-y-6">
                     <InfoCard
                         icon={<MapPin className="h-6 w-6" />}
-                        title="Factory & Office"
-                        content={settings.address || 'Singur, Hooghly, West Bengal, India - 712409'}
+                        title="Office"
+                        content={settings.address || '18, HariramGoenka Street, Burabuzar, Kolkata, India. pin code - 700007'}
+                        action="Get Directions"
+                        href="#"
+                    />
+                    <InfoCard
+                        icon={<MapPin className="h-6 w-6" />}
+                        title="Factory"
+                        content={'Singur, Hoogly, West Bengal, India 722409'}
                         action="Get Directions"
                         href="#"
                     />
                     <InfoCard
                         icon={<Phone className="h-6 w-6" />}
                         title="Phone"
-                        content={settings.phone || '+91 98765 43210'}
+                        content={settings.phone || '8981420463'}
                         action="Call Now"
-                        href={`tel:${settings.phone}`}
+                        href={`tel:${settings.phone || '8981420463'}`}
                     />
                     <InfoCard
                         icon={<Mail className="h-6 w-6" />}
                         title="Email"
-                        content={settings.email || 'contact@chhandajewellers.com'}
+                        content={settings.email || 'chhandajewellers@gmail.com'}
                         action="Send Email"
-                        href={`mailto:${settings.email}`}
+                        href={`mailto:${settings.email || 'chhandajewellers@gmail.com'}`}
                     />
                 </div>
             </div>
