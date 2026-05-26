@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@theme {
+  --color-background: #050505;
+  --color-foreground: #ffffff;
+  --color-primary: #D4AF37;
+  
+  --font-inter: 'Inter', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+
+  --animate-shimmer: shimmer 5s infinite linear;
+
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+}
+
 :root {
   --font-inter: 'Inter', sans-serif;
   --font-playfair: 'Playfair Display', serif;
@@ -79,18 +95,19 @@
   }
 
   .glass-panel {
-    background-color: rgba(5, 5, 5, 0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    background-color: rgba(5, 5, 5, 0.75);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
   }
 
   .glass-panel-gold {
-    background-color: rgba(5, 5, 5, 0.8);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    background-color: rgba(10, 8, 5, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
   }
 }
 
