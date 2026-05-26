@@ -78,15 +78,19 @@ export async function Footer() {
                         <ul className="space-y-4">
                             <li className="flex items-start gap-3 text-gray-400 text-sm">
                                 <MapPin className="h-5 w-5 text-primary shrink-0" />
-                                <span>{settings.address || '18, HariramGoenka Street, Burabuzar, Kolkata, India. pin code - 700007'}</span>
+                                <span>18, HariramGoenka Street, Burabuzar, Kolkata, India. Pin code - 700007</span>
                             </li>
                             <li className="flex items-center gap-3 text-gray-400 text-sm">
                                 <Phone className="h-5 w-5 text-primary shrink-0" />
-                                <span>{settings.phone || '8981420463'}</span>
+                                <a href="tel:+918981420463" className="hover:text-primary transition-colors">+91 8981420463</a>
                             </li>
                             <li className="flex items-center gap-3 text-gray-400 text-sm">
                                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                                <span>{settings.email || 'chhandajewellers@gmail.com'}</span>
+                                <a href="mailto:chhandajewellers@gmail.com" className="hover:text-primary transition-colors">chhandajewellers@gmail.com</a>
+                            </li>
+                            <li className="flex items-start gap-3 text-gray-400 text-sm">
+                                <MapPin className="h-5 w-5 text-primary shrink-0" />
+                                <span>Factory: Singur, Hoogly, West Bengal, India 722409</span>
                             </li>
                         </ul>
                     </div>

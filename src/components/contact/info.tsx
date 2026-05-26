@@ -19,7 +19,7 @@ export async function ContactInfo() {
                     <InfoCard
                         icon={<MapPin className="h-6 w-6" />}
                         title="Office"
-                        content={settings.address || '18, HariramGoenka Street, Burabuzar, Kolkata, India. pin code - 700007'}
+                        content={'18, HariramGoenka Street, Burabuzar, Kolkata, India. Pin code - 700007'}
                         action="Get Directions"
                         href="#"
                     />
@@ -33,16 +33,16 @@ export async function ContactInfo() {
                     <InfoCard
                         icon={<Phone className="h-6 w-6" />}
                         title="Phone"
-                        content={settings.phone || '8981420463'}
+                        content={'+91 8981420463'}
                         action="Call Now"
-                        href={`tel:${settings.phone || '8981420463'}`}
+                        href={'tel:+918981420463'}
                     />
                     <InfoCard
                         icon={<Mail className="h-6 w-6" />}
                         title="Email"
-                        content={settings.email || 'chhandajewellers@gmail.com'}
+                        content={'chhandajewellers@gmail.com'}
                         action="Send Email"
-                        href={`mailto:${settings.email || 'chhandajewellers@gmail.com'}`}
+                        href={'mailto:chhandajewellers@gmail.com'}
                     />
                 </div>
             </div>

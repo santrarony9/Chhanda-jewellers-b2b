@@ -14,14 +14,13 @@ export function ManufacturingHighlight() {
                     {/* Visual Side */}
                     <div className="w-full lg:w-1/2 relative h-[600px] order-2 lg:order-1">
                         <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden group">
-                            {/* Placeholder for Video/Image */}
+                            {/* Founder Image */}
+                            <img
+                                src="/founder.jpg"
+                                alt="Mr. Hemanta Koley - Managing Director, Chhanda Jewellers"
+                                className="h-full w-full object-cover object-top"
+                            />
                             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black to-transparent z-10" />
-                            <div className="h-full w-full bg-[url('/grid.svg')] opacity-5 scale-150" />
-
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-0">
-                                <span className="block text-9xl font-serif font-black text-white/5">EST</span>
-                                <span className="block text-9xl font-serif font-black text-white/5">2000</span>
-                            </div>
 
                             <motion.div
                                 className="absolute bottom-10 left-10 z-20"
@@ -29,8 +28,10 @@ export function ManufacturingHighlight() {
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="text-6xl font-serif font-bold text-white mb-2">25+</div>
-                                <div className="text-primary uppercase tracking-[0.3em] text-sm font-medium">Years of Mastery</div>
+                                <div className="text-3xl font-serif font-bold text-white mb-1">Mr. Hemanta Koley</div>
+                                <div className="text-primary uppercase tracking-[0.3em] text-sm font-medium mb-4">Chairman</div>
+                                <div className="text-5xl font-serif font-bold text-white/80">25+</div>
+                                <div className="text-gray-400 uppercase tracking-[0.2em] text-xs font-medium">Years of Mastery</div>
                             </motion.div>
                         </div>
 
