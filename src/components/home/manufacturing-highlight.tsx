@@ -12,31 +12,31 @@ export function ManufacturingHighlight() {
                 <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
                     {/* Visual Side */}
-                    <div className="w-full lg:w-1/2 relative h-[600px] order-2 lg:order-1">
+                    <div className="w-full lg:w-1/2 relative h-[450px] md:h-[600px] order-2 lg:order-1 mt-8 lg:mt-0">
                         <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden group">
                             {/* Founder Image */}
                             <img
                                 src="/founder.jpg"
-                                alt="Mr. Hemanta Koley - Managing Director, Chhanda Jewellers"
+                                alt="Mr. Hemanta Koley - Chairman, Chhanda Jewellers"
                                 className="h-full w-full object-cover object-top"
                             />
                             <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black to-transparent z-10" />
 
                             <motion.div
-                                className="absolute bottom-10 left-10 z-20"
+                                className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-20 pr-6"
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="text-3xl font-serif font-bold text-white mb-1">Mr. Hemanta Koley</div>
-                                <div className="text-primary uppercase tracking-[0.3em] text-sm font-medium mb-4">Chairman</div>
-                                <div className="text-5xl font-serif font-bold text-white/80">25+</div>
-                                <div className="text-gray-400 uppercase tracking-[0.2em] text-xs font-medium">Years of Mastery</div>
+                                <div className="text-2xl md:text-3xl font-serif font-bold text-white mb-1">Mr. Hemanta Koley</div>
+                                <div className="text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm font-medium mb-3 md:mb-4">Chairman</div>
+                                <div className="text-4xl md:text-5xl font-serif font-bold text-white/80">25+</div>
+                                <div className="text-gray-400 uppercase tracking-[0.15em] md:tracking-[0.2em] text-[10px] md:text-xs font-medium">Years of Mastery</div>
                             </motion.div>
                         </div>
 
                         {/* Decorative Frame */}
-                        <div className="absolute -inset-4 border border-primary/20 -z-10 translate-x-4 translate-y-4" />
+                        <div className="absolute -inset-2 md:-inset-4 border border-primary/20 -z-10 translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4" />
                     </div>
 
                     {/* Content Side */}
