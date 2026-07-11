@@ -33,6 +33,7 @@ interface ProductItem {
 }
 
 interface SettingsData {
+    logo: string
     phone: string
     email: string
     address: string
@@ -51,6 +52,10 @@ interface SettingsData {
             heading: string
             subheading: string
             description: string
+            mdImage: string
+            mdName: string
+            mdTitle: string
+            mdDescription: string
         }
     }
     manufacturing: {
@@ -66,6 +71,7 @@ export default function SettingsPage() {
     const [loading, setLoading] = useState(true)
     const [saving, setSaving] = useState(false)
     const [formData, setFormData] = useState<SettingsData>({
+        logo: "/icon.png",
         phone: "",
         email: "",
         address: "",
@@ -83,7 +89,11 @@ export default function SettingsPage() {
                 yearsOfMastery: "",
                 heading: "",
                 subheading: "",
-                description: ""
+                description: "",
+                mdImage: "/rabi-shankar.jpg",
+                mdName: "",
+                mdTitle: "",
+                mdDescription: ""
             }
         },
         manufacturing: {
@@ -116,6 +126,7 @@ export default function SettingsPage() {
                 const fetchedProd = data.data.products || {};
 
                 setFormData({
+                    logo: data.data.logo || "/icon.png",
                     phone: data.data.phone || "",
                     email: data.data.email || "",
                     address: data.data.address || "",
@@ -133,7 +144,11 @@ export default function SettingsPage() {
                             yearsOfMastery: "",
                             heading: "",
                             subheading: "",
-                            description: ""
+                            description: "",
+                            mdImage: "/rabi-shankar.jpg",
+                            mdName: "",
+                            mdTitle: "",
+                            mdDescription: ""
                         }
                     },
                     manufacturing: {
@@ -181,8 +196,12 @@ export default function SettingsPage() {
         return <div className="min-h-screen bg-black flex items-center justify-center text-white">Loading...</div>
     }
 
+    console.log("DEBUG RENDER - Categories count:", formData.home?.categories?.length);
+    console.log("DEBUG RENDER - Gallery count:", formData.manufacturing?.gallery?.length);
+    console.log("DEBUG RENDER - Featured count:", formData.products?.featured?.length);
+
     return (
-        <div className="min-h-screen bg-black text-white p-8 pt-20">
+        <div className="min-h-screen bg-black text-white p-8 pt-28 md:pt-36">
             <div className="max-w-2xl mx-auto">
                 <div className="flex items-center gap-4 mb-8">
                     <Button variant="ghost" onClick={() => router.push('/admin')} className="text-gray-400 hover:text-white">
@@ -197,6 +216,18 @@ export default function SettingsPage() {
                         {/* Contact & Socials */}
                         <div className="space-y-8">
                             <h2 className="text-2xl font-serif text-primary border-b border-zinc-800 pb-4">General Settings</h2>
+
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-medium text-white">Brand Logo</h3>
+                                <div>
+                                    <Label className="mb-2 block">Site Logo (Navbar & Footer)</Label>
+                                    <ImageUpload
+                                        value={formData.logo || ''}
+                                        onChange={(val) => setFormData({ ...formData, logo: val })}
+                                    />
+                                    <p className="text-xs text-gray-500 mt-2">Recommended: Transparent PNG or WebP, square</p>
+                                </div>
+                            </div>
 
                             <div className="grid md:grid-cols-2 gap-8">
                                 <div className="space-y-4">
@@ -379,6 +410,43 @@ export default function SettingsPage() {
                                             <Input
                                                 value={formData.home?.manufacturingHighlight?.description || ''}
                                                 onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, description: e.target.value } } })}
+                                                className="bg-black border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3 className="text-xl font-medium text-white mt-8">Manufacturing Highlight (Managing Director)</h3>
+                                <div className="p-4 border border-zinc-800 rounded-lg bg-black/50 space-y-6">
+                                    <div>
+                                        <Label className="mb-2 block">Managing Director Image</Label>
+                                        <ImageUpload
+                                            value={formData.home?.manufacturingHighlight?.mdImage || ''}
+                                            onChange={(val) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, mdImage: val } } })}
+                                        />
+                                    </div>
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <Label>Name</Label>
+                                            <Input
+                                                value={formData.home?.manufacturingHighlight?.mdName || ''}
+                                                onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, mdName: e.target.value } } })}
+                                                className="bg-black border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                        <div>
+                                            <Label>Title</Label>
+                                            <Input
+                                                value={formData.home?.manufacturingHighlight?.mdTitle || ''}
+                                                onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, mdTitle: e.target.value } } })}
+                                                className="bg-black border-zinc-700 text-white"
+                                            />
+                                        </div>
+                                        <div className="md:col-span-2">
+                                            <Label>Description</Label>
+                                            <Input
+                                                value={formData.home?.manufacturingHighlight?.mdDescription || ''}
+                                                onChange={(e) => setFormData({ ...formData, home: { ...formData.home, manufacturingHighlight: { ...formData.home.manufacturingHighlight, mdDescription: e.target.value } } })}
                                                 className="bg-black border-zinc-700 text-white"
                                             />
                                         </div>

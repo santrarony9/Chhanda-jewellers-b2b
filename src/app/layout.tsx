@@ -10,7 +10,9 @@ export const metadata: Metadata = {
   title: "Chhanda Jewellers | Diamond Jewellery Manufacturer",
   description: "Premier B2B Jewellery Manufacturer in Singur, West Bengal. Bulk supply, OEM, and custom designs.",
   icons: {
-    icon: '/icon.png',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/icon.png',
   },
 };
 

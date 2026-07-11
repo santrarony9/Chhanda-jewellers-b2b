@@ -20,7 +20,7 @@ export async function Footer() {
                         <Link href="/" className="flex items-center gap-2">
                             <div className="relative h-10 w-10">
                                 <img
-                                    src="/icon.png"
+                                    src={settings.logo || "/icon.png"}
                                     alt="Chhanda Jewellers Logo"
                                     className="object-contain w-full h-full"
                                 />

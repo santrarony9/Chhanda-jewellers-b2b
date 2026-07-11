@@ -11,7 +11,7 @@ export const metadata = {
 
 export default function B2BPage() {
     return (
-        <main className="bg-background min-h-screen pt-20">
+        <main className="bg-background min-h-screen pt-28 md:pt-36">
             <Navbar />
 
             {/* Header */}

@@ -101,8 +101,8 @@ export function FeaturedCategories({ categories = defaultCategories }: FeaturedC
 
                                 {/* Visual Cue */}
                                 <div className="absolute top-0 right-0 w-full h-full opacity-60 group-hover:opacity-100 transition-all duration-1000 transform group-hover:scale-110 -z-10 origin-center grayscale-[20%] group-hover:grayscale-0">
-                                    {cat.visual ? (
-                                        <img src={cat.visual} alt={cat.title} className="w-full h-full object-cover object-center transition-all duration-700" />
+                                    {(cat.visual || cat.image) ? (
+                                        <img src={cat.visual || cat.image} alt={cat.title} className="w-full h-full object-cover object-center transition-all duration-700" />
                                     ) : (
                                         <div className="w-full h-full bg-surface-light/5" />
                                     )}

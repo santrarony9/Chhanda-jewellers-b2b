@@ -21,6 +21,20 @@ import { TimeDisplay } from "@/components/layout/time-display"
 export function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
     const [scrolled, setScrolled] = React.useState(false)
+    const [logoSrc, setLogoSrc] = React.useState("/icon.png")
+
+    React.useEffect(() => {
+        const fetchLogo = async () => {
+            try {
+                const res = await fetch('/api/settings');
+                const data = await res.json();
+                if (data?.data?.logo) setLogoSrc(data.data.logo);
+            } catch (e) {
+                console.error("Failed to fetch logo:", e);
+            }
+        };
+        fetchLogo();
+    }, [])
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -50,7 +64,7 @@ export function Navbar() {
                         {/* Company Logo */}
                         <div className="relative h-12 w-12 transition-transform duration-500 group-hover:scale-105">
                             <Image
-                                src="/icon.png"
+                                src={logoSrc}
                                 alt="Chhanda Jewellers Logo"
                                 fill
                                 className="object-contain"
@@ -105,7 +119,7 @@ export function Navbar() {
                     <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                         <div className="relative h-12 w-12">
                             <Image
-                                src="/icon.png"
+                                src={logoSrc}
                                 alt="Chhanda Jewellers Logo"
                                 fill
                                 className="object-contain"

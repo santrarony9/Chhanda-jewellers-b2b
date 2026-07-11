@@ -30,7 +30,7 @@ export default async function ProductsPage() {
     const featuredProducts = content?.products?.featured;
 
     return (
-        <main className="bg-background min-h-screen pt-20">
+        <main className="bg-background min-h-screen pt-28 md:pt-36">
             <Navbar />
 
             {/* Header */}

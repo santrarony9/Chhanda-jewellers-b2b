@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function ContactPage() {
     return (
-        <main className="bg-background min-h-screen pt-20">
+        <main className="bg-background min-h-screen pt-28 md:pt-36">
             <Navbar />
 
             <section className="py-12 bg-surface-dark border-b border-surface-light">

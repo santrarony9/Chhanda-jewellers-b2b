@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Upload, X, Image as ImageIcon } from "lucide-react"
 import Image from "next/image"
 
+import { compressImage } from "@/lib/utils"
+
 interface ImageUploadProps {
     value?: string
     onChange: (value: string) => void
@@ -16,24 +18,26 @@ export function ImageUpload({ value, onChange, disabled }: ImageUploadProps) {
     const [preview, setPreview] = useState(value)
     const [loading, setLoading] = useState(false)
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0]
         if (!file) return
 
-        if (file.size > 2 * 1024 * 1024) { // 2MB Limit
-            alert("File is too large. Max size is 2MB.")
+        if (file.size > 5 * 1024 * 1024) { // 5MB Limit
+            alert("File is too large. Max size is 5MB.")
             return
         }
 
         setLoading(true)
-        const reader = new FileReader()
-        reader.onloadend = () => {
-            const base64String = reader.result as string
-            setPreview(base64String)
-            onChange(base64String)
+        try {
+            const compressedBase64 = await compressImage(file)
+            setPreview(compressedBase64)
+            onChange(compressedBase64)
+        } catch (error) {
+            console.error("Compression error:", error)
+            alert("Failed to process image.")
+        } finally {
             setLoading(false)
         }
-        reader.readAsDataURL(file)
     }
 
     const onClear = () => {
@@ -67,7 +71,7 @@ export function ImageUpload({ value, onChange, disabled }: ImageUploadProps) {
                     <span className="text-sm text-gray-400">
                         {loading ? "Processing..." : "Click to upload image"}
                     </span>
-                    <span className="text-xs text-gray-500">(Max 2MB)</span>
+                    <span className="text-xs text-gray-500">(Max 5MB)</span>
                 </Button>
             ) : (
                 <div className="relative w-full h-48 rounded-lg overflow-hidden border border-white/10 group">

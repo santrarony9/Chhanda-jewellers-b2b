@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { compressImage } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -264,30 +265,34 @@ export default function AddProductPage() {
                                         multiple
                                         accept="image/*"
                                         className="hidden"
-                                        onChange={(e) => {
+                                        onChange={async (e) => {
                                             const files = e.target.files;
                                             if (files && files.length > 0) {
-                                                Array.from(files).forEach(file => {
-                                                    if (file.size > 4 * 1024 * 1024) {
-                                                        alert(`File ${file.name} is too large (max 4MB)`);
-                                                        return;
+                                                const compressedImages: string[] = [];
+                                                for (const file of Array.from(files)) {
+                                                    if (file.size > 5 * 1024 * 1024) {
+                                                        alert(`File ${file.name} is too large (max 5MB)`);
+                                                        continue;
                                                     }
-                                                    const reader = new FileReader();
-                                                    reader.onloadend = () => {
-                                                        if (reader.result) {
-                                                            setFormData(prev => ({
-                                                                ...prev,
-                                                                images: [...prev.images, reader.result as string]
-                                                            }));
-                                                        }
-                                                    };
-                                                    reader.readAsDataURL(file);
-                                                });
+                                                    try {
+                                                        const compressed = await compressImage(file);
+                                                        compressedImages.push(compressed);
+                                                    } catch (error) {
+                                                        console.error("Compression error:", error);
+                                                        alert(`Failed to process ${file.name}`);
+                                                    }
+                                                }
+                                                if (compressedImages.length > 0) {
+                                                    setFormData(prev => ({
+                                                        ...prev,
+                                                        images: [...prev.images, ...compressedImages]
+                                                    }));
+                                                }
                                             }
                                         }}
                                     />
                                 </Label>
-                                <p className="text-xs text-gray-500 mt-1">Max 4MB per image. Images are stored directly in the database.</p>
+                                <p className="text-xs text-gray-500 mt-1">Max 5MB per image. Images are stored directly in the database.</p>
                             </div>
 
                             {/* Diamond Specific Fields */}

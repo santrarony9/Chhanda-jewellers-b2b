@@ -14,6 +14,10 @@ interface ManufacturingHighlightProps {
         heading?: string
         subheading?: string
         description?: string
+        mdImage?: string
+        mdName?: string
+        mdTitle?: string
+        mdDescription?: string
     }
 }
 
@@ -23,32 +27,62 @@ export function ManufacturingHighlight({ data }: ManufacturingHighlightProps) {
             <div className="container mx-auto px-4">
                 <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
-                    {/* Visual Side */}
-                    <div className="w-full lg:w-1/2 relative h-[450px] md:h-[600px] order-2 lg:order-1 mt-8 lg:mt-0">
-                        <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden group">
-                            {/* Founder Image */}
-                            <img
-                                src={data?.founderImage || "/founder.jpg"}
-                                alt={`${data?.founderName || "Mr. Hemanta Koley"} - ${data?.founderTitle || "Chairman"}, Chhanda Jewellers`}
-                                className="h-full w-full object-cover object-top"
-                            />
-                            <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black to-transparent z-10" />
-
+                    {/* Visual Side - Dual Leadership */}
+                    <div className="w-full lg:w-1/2 relative order-2 lg:order-1 mt-8 lg:mt-0">
+                        <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
+                            {/* Founder - Chairman */}
                             <motion.div
-                                className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-20 pr-6"
-                                initial={{ opacity: 0, x: -20 }}
+                                className="flex-1 relative h-[350px] sm:h-[450px] md:h-[550px] group"
+                                initial={{ opacity: 0, x: -30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
+                                transition={{ duration: 0.6 }}
                             >
-                                <div className="text-2xl md:text-3xl font-serif font-bold text-white mb-1">{data?.founderName || "Mr. Hemanta Koley"}</div>
-                                <div className="text-primary uppercase tracking-[0.2em] md:tracking-[0.3em] text-xs md:text-sm font-medium mb-3 md:mb-4">{data?.founderTitle || "Chairman"}</div>
-                                <div className="text-4xl md:text-5xl font-serif font-bold text-white/80">{data?.yearsOfMastery || "25+"}</div>
-                                <div className="text-gray-400 uppercase tracking-[0.15em] md:tracking-[0.2em] text-[10px] md:text-xs font-medium">Years of Mastery</div>
+                                <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden">
+                                    <img
+                                        src={data?.founderImage || "/founder.jpg"}
+                                        alt={`${data?.founderName || "Mr. Hemanta Koley"} - ${data?.founderTitle || "Chairman"}, Chhanda Jewellers`}
+                                        className="h-full w-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                                    />
+                                    <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
+
+                                    <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-20 pr-4">
+                                        <div className="text-lg md:text-2xl font-serif font-bold text-white mb-0.5">{data?.founderName || "Mr. Hemanta Koley"}</div>
+                                        <div className="text-primary uppercase tracking-[0.2em] text-[10px] md:text-xs font-medium mb-2">{data?.founderTitle || "Chairman"}</div>
+                                        <div className="text-2xl md:text-3xl font-serif font-bold text-white/80">{data?.yearsOfMastery || "25+"}</div>
+                                        <div className="text-gray-400 uppercase tracking-[0.15em] text-[9px] md:text-[10px] font-medium">Years of Mastery</div>
+                                    </div>
+                                </div>
+                                {/* Decorative Frame */}
+                                <div className="absolute -inset-1.5 md:-inset-3 border border-primary/20 -z-10 translate-x-1.5 translate-y-1.5 md:translate-x-3 md:translate-y-3" />
+                            </motion.div>
+
+                            {/* Son - Managing Director */}
+                            <motion.div
+                                className="flex-1 relative h-[350px] sm:h-[450px] md:h-[550px] group"
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                            >
+                                <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden">
+                                    <img
+                                        src={data?.mdImage || "/rabi-shankar.jpg"}
+                                        alt={`${data?.mdName || "Rabi Shankar Koley"} - Managing Director, Chhanda Jewellers`}
+                                        className="h-full w-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                                    />
+                                    <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
+
+                                    <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 z-20 pr-4">
+                                        <div className="text-lg md:text-2xl font-serif font-bold text-white mb-0.5">{data?.mdName || "Rabi Shankar Koley"}</div>
+                                        <div className="text-primary uppercase tracking-[0.2em] text-[10px] md:text-xs font-medium mb-2">{data?.mdTitle || "Managing Director"}</div>
+                                        <div className="text-gray-400 text-[10px] md:text-xs leading-relaxed max-w-[180px]">{data?.mdDescription || "Now leading Chhanda Jewellers into the next era of excellence."}</div>
+                                    </div>
+                                </div>
+                                {/* Decorative Frame */}
+                                <div className="absolute -inset-1.5 md:-inset-3 border border-primary/20 -z-10 -translate-x-1.5 translate-y-1.5 md:-translate-x-3 md:translate-y-3" />
                             </motion.div>
                         </div>
-
-                        {/* Decorative Frame */}
-                        <div className="absolute -inset-2 md:-inset-4 border border-primary/20 -z-10 translate-x-2 translate-y-2 md:translate-x-4 md:translate-y-4" />
                     </div>
 
                     {/* Content Side */}

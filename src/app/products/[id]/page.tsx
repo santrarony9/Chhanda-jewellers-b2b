@@ -27,7 +27,7 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
     if (!product) {
         // You could also return notFound() here
         return (
-            <main className="bg-background min-h-screen pt-20 flex flex-col items-center justify-center">
+            <main className="bg-background min-h-screen pt-28 md:pt-36 flex flex-col items-center justify-center">
                 <Navbar />
                 <div className="text-center">
                     <AlertCircle className="h-16 w-16 text-red-500 mx-auto mb-4" />
@@ -40,7 +40,7 @@ export default async function ProductDetails({ params }: { params: Promise<{ id:
     }
 
     return (
-        <main className="bg-background min-h-screen pt-20">
+        <main className="bg-background min-h-screen pt-28 md:pt-36">
             <Navbar />
 
             <div className="container mx-auto px-4 py-8">

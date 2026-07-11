@@ -18,7 +18,7 @@ export const metadata = {
 
 export default function GalleryPage() {
     return (
-        <main className="bg-background min-h-screen pt-20">
+        <main className="bg-background min-h-screen pt-28 md:pt-36">
             <Navbar />
 
             <section className="bg-surface-dark py-16 border-b border-surface-light">

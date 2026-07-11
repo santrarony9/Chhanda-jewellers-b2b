@@ -29,6 +29,10 @@ const SiteSettingsSchema = new Schema({
         type: String,
         default: '',
     },
+    logo: {
+        type: String,
+        default: '/icon.png',
+    },
     // Home Page Content
     home: {
         heroImage: { type: String, default: '/hero-jewellery-v3.png' },
@@ -88,7 +92,11 @@ const SiteSettingsSchema = new Schema({
             yearsOfMastery: { type: String, default: '25+' },
             heading: { type: String, default: 'Precision Casting meets' },
             subheading: { type: String, default: 'Bengal\'s Artistry' },
-            description: { type: String, default: 'Our Singur facility is equipped with advanced Vacuum Casting technology and Laser Soldering units. Yet, we believe the soul of jewellery lies in the hands of the artisan. We combine automation with unmatched hand-finishing.' }
+            description: { type: String, default: 'Our Singur facility is equipped with advanced Vacuum Casting technology and Laser Soldering units. Yet, we believe the soul of jewellery lies in the hands of the artisan. We combine automation with unmatched hand-finishing.' },
+            mdImage: { type: String, default: '/rabi-shankar.jpg' },
+            mdName: { type: String, default: 'Rabi Shankar Koley' },
+            mdTitle: { type: String, default: 'Managing Director' },
+            mdDescription: { type: String, default: 'Now leading Chhanda Jewellers into the next era of excellence.' }
         }
     },
     // Manufacturing Page Content

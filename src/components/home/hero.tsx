@@ -15,7 +15,7 @@ export function Hero({ heroImage }: HeroProps) {
     const yRange = useTransform(scrollY, [0, 500], [0, 100]);
 
     return (
-        <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
+        <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
             {/* Background Layers */}
             <div className="absolute inset-0 bg-background z-0" />
             <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] z-0" />
