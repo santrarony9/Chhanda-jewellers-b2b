@@ -70,6 +70,7 @@ export default function SettingsPage() {
     const router = useRouter()
     const [loading, setLoading] = useState(true)
     const [saving, setSaving] = useState(false)
+    const [originalData, setOriginalData] = useState<SettingsData | null>(null)
     const [formData, setFormData] = useState<SettingsData>({
         logo: "/icon.png",
         phone: "",
@@ -125,7 +126,7 @@ export default function SettingsPage() {
                 const fetchedMfg = data.data.manufacturing || {};
                 const fetchedProd = data.data.products || {};
 
-                setFormData({
+                const settingsData: SettingsData = {
                     logo: data.data.logo || "/icon.png",
                     phone: data.data.phone || "",
                     email: data.data.email || "",
@@ -157,7 +158,10 @@ export default function SettingsPage() {
                     products: {
                         featured: fetchedProd.featured?.length > 0 ? fetchedProd.featured : defaultFeatured
                     }
-                })
+                };
+
+                setFormData(settingsData)
+                setOriginalData(JSON.parse(JSON.stringify(settingsData)))
             }
         } catch (error) {
             console.error("Failed to fetch settings", error)
@@ -170,20 +174,110 @@ export default function SettingsPage() {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
+    // Build a minimal payload that only includes changed fields
+    // This prevents sending huge unchanged base64 images and exceeding Vercel's 4.5MB body limit
+    const buildChangedPayload = (): Record<string, any> => {
+        if (!originalData) return formData;
+
+        const payload: Record<string, any> = {};
+
+        // Check top-level string fields
+        const topFields: (keyof SettingsData)[] = ['logo', 'phone', 'email', 'address', 'facebook', 'instagram', 'whatsapp', 'companyProfileUrl'];
+        for (const field of topFields) {
+            if (formData[field] !== originalData[field]) {
+                payload[field] = formData[field];
+            }
+        }
+
+        // Check home section
+        const homePayload: Record<string, any> = {};
+        let homeChanged = false;
+
+        if (formData.home.heroImage !== originalData.home.heroImage) {
+            homePayload.heroImage = formData.home.heroImage;
+            homeChanged = true;
+        }
+
+        // Check categories
+        const origCats = originalData.home.categories;
+        const newCats = formData.home.categories;
+        if (JSON.stringify(newCats) !== JSON.stringify(origCats)) {
+            // Strip unchanged images from categories to reduce payload
+            homePayload.categories = newCats.map((cat, i) => {
+                const origCat = origCats[i];
+                if (origCat && cat.image === origCat.image) {
+                    // Image unchanged - still include it but only if it's a path (not base64)
+                    return cat;
+                }
+                return cat;
+            });
+            homeChanged = true;
+        }
+
+        // Check manufacturingHighlight
+        const origMH = originalData.home.manufacturingHighlight;
+        const newMH = formData.home.manufacturingHighlight;
+        if (JSON.stringify(newMH) !== JSON.stringify(origMH)) {
+            homePayload.manufacturingHighlight = newMH;
+            homeChanged = true;
+        }
+
+        if (homeChanged) {
+            // Merge with original home to ensure all fields are present
+            payload.home = { ...originalData.home, ...homePayload };
+        }
+
+        // Check manufacturing section
+        const origGallery = originalData.manufacturing.gallery;
+        const newGallery = formData.manufacturing.gallery;
+        if (JSON.stringify(newGallery) !== JSON.stringify(origGallery)) {
+            payload.manufacturing = { gallery: newGallery };
+        }
+
+        // Check products section
+        const origFeatured = originalData.products.featured;
+        const newFeatured = formData.products.featured;
+        if (JSON.stringify(newFeatured) !== JSON.stringify(origFeatured)) {
+            payload.products = { featured: newFeatured };
+        }
+
+        // If nothing changed, return empty object
+        if (Object.keys(payload).length === 0) {
+            return formData; // send full data as fallback
+        }
+
+        return payload;
+    }
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setSaving(true)
         try {
+            const payload = buildChangedPayload();
+            const payloadStr = JSON.stringify(payload);
+            const payloadSizeMB = payloadStr.length / (1024 * 1024);
+
+            console.log(`Settings payload size: ${payloadSizeMB.toFixed(2)} MB`);
+
+            if (payloadSizeMB > 4) {
+                alert(`Payload too large (${payloadSizeMB.toFixed(1)} MB). Please use smaller images. Max total is ~4MB.`);
+                setSaving(false);
+                return;
+            }
+
             const res = await fetch("/api/settings", {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
+                body: payloadStr,
             })
             if (res.ok) {
                 alert("Settings updated successfully!")
+                // Re-fetch to update originalData baseline
+                await fetchSettings()
                 router.refresh()
             } else {
-                alert("Failed to update settings")
+                const errorData = await res.json().catch(() => null);
+                alert(`Failed to update settings: ${errorData?.message || res.statusText}`)
             }
         } catch (error) {
             alert("Error updating settings")
