@@ -4,6 +4,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import dbConnect from "@/lib/db";
@@ -50,16 +51,16 @@ export default async function AdminDashboard() {
                     <span className="text-gray-400">Welcome, {session.user?.name}</span>
                     {/* Logout handling would typically comprise a client component or a form action */}
                     <Button className="font-bold bg-primary text-black" asChild>
-                        <a href="/admin/products/new">Add Product</a>
+                        <Link href="/admin/products/new">Add Product</Link>
                     </Button>
                     <Button variant="outline" className="border-primary text-primary" asChild>
-                        <a href="/admin/users">Manage Users</a>
+                        <Link href="/admin/users">Manage Users</Link>
                     </Button>
                     <Button variant="outline" className="border-zinc-700 text-gray-300" asChild>
-                        <a href="/admin/settings">Site Config</a>
+                        <Link href="/admin/settings">Site Config</Link>
                     </Button>
                     <Button variant="outline" asChild>
-                        <a href="/api/auth/signout">Logout</a>
+                        <Link href="/api/auth/signout">Logout</Link>
                     </Button>
                 </div>
             </div>

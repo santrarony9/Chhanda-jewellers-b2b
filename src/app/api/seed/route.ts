@@ -7,17 +7,13 @@ export async function GET() {
     try {
         await dbConnect();
 
-        // Check if admin already exists
-        const existingAdmin = await User.findOne({ email: 'admin@chhandajewellers.com' });
+        // Check if any users already exist to prevent unauthorized password resets
+        const userCount = await User.countDocuments();
+        if (userCount > 0) {
+            return NextResponse.json({ message: 'Database already initialized. Seed disabled.' }, { status: 403 });
+        }
 
         const hashedPassword = await bcrypt.hash('admin123', 10);
-
-        if (existingAdmin) {
-            // Update existing admin password
-            existingAdmin.password = hashedPassword;
-            await existingAdmin.save();
-            return NextResponse.json({ message: 'Admin password reset successfully', user: { email: existingAdmin.email } });
-        }
 
         const adminUser = await User.create({
             name: 'Admin',
@@ -26,7 +22,7 @@ export async function GET() {
             role: 'admin',
         });
 
-        return NextResponse.json({ message: 'Admin user created successfully', user: { email: adminUser.email } });
+        return NextResponse.json({ message: 'Initial admin user created successfully', user: { email: adminUser.email } });
     } catch (error: any) {
         return NextResponse.json({ message: 'Error creating admin', error: error.message }, { status: 500 });
     }

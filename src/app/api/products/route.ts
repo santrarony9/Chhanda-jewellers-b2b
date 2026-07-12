@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     try {
         // Protect this route
         const session = await getServerSession(authOptions);
-        if (!session) {
+        if (!session || !session.user || session.user.role !== 'admin') {
             return NextResponse.json({ success: false, message: 'Unauthorized' }, { status: 401 });
         }
 

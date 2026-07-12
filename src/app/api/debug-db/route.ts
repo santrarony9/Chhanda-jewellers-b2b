@@ -1,38 +1,37 @@
 import { NextResponse } from 'next/server';
+import dbConnect from '@/lib/db';
 import mongoose from 'mongoose';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-    const uri = process.env.MONGODB_URI;
-
-    if (!uri) {
-        return NextResponse.json({
-            status: 'error',
-            message: 'MONGODB_URI is undefined in environment variables.'
-        }, { status: 500 });
-    }
-
     try {
-        // Check current state
-        if (mongoose.connection.readyState === 1) {
-            return NextResponse.json({ status: 'success', message: 'Already connected to MongoDB.' });
+        const session = await getServerSession(authOptions);
+        if (!session || !session.user || session.user.role !== 'admin') {
+            return NextResponse.json({ status: 'error', message: 'Unauthorized' }, { status: 401 });
         }
 
-        // Attempt connection
-        await mongoose.connect(uri, {
-            bufferCommands: false,
-            serverSelectionTimeoutMS: 5000, // Fail fast after 5s
+        const uri = process.env.MONGODB_URI;
+        if (!uri) {
+            return NextResponse.json({
+                status: 'error',
+                message: 'MONGODB_URI is not set.'
+            }, { status: 500 });
+        }
+
+        await dbConnect();
+
+        return NextResponse.json({
+            status: 'success',
+            message: 'Connected to MongoDB',
+            readyState: mongoose.connection.readyState
         });
-
-        return NextResponse.json({ status: 'success', message: 'Successfully connected to MongoDB!' });
-
     } catch (error: any) {
         return NextResponse.json({
             status: 'error',
-            name: error.name,
-            message: error.message,
-            code: error.code
+            message: 'Database connection check failed.'
         }, { status: 500 });
     }
 }

@@ -50,7 +50,7 @@ export async function POST(req: Request) {
             name,
             email,
             password: hashedPassword,
-            role: role || 'admin', // Default to admin for now as this is "Add Admin" feature
+            role: role || 'partner',
         });
 
         return NextResponse.json({ success: true, data: newUser, message: 'User created successfully' });
