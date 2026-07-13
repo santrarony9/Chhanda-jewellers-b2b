@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Navbar } from "@/components/layout/navbar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Trash2, UserPlus, ShieldAlert } from "lucide-react"
@@ -49,6 +48,7 @@ export default function UserManagement() {
                 setError(data.message)
             }
         } catch (err) {
+            console.error(err)
             setError("Failed to create user")
         }
     }
@@ -65,6 +65,7 @@ export default function UserManagement() {
                 alert(data.message)
             }
         } catch (err) {
+            console.error(err)
             alert("Failed to delete")
         }
     }

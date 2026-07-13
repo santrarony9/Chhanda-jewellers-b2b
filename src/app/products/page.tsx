@@ -21,6 +21,7 @@ async function getSiteContent() {
         if (!settings) return null;
         return JSON.parse(JSON.stringify(settings));
     } catch (error) {
+        console.error("Failed to fetch site content:", error);
         return null;
     }
 }

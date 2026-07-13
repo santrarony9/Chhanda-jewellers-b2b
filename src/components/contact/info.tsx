@@ -1,11 +1,17 @@
-import { Mail, MapPin, Phone, MessageCircle, Clock, CheckCircle } from "lucide-react"
+import { Mail, MapPin, Phone, CheckCircle } from "lucide-react"
 import dbConnect from "@/lib/db"
 import SiteSettings from "@/models/SiteSettings"
 
 async function getSettings() {
-    await dbConnect()
-    const settings = await SiteSettings.findOne()
-    return settings || {}
+    try {
+        await dbConnect()
+        const settings = await SiteSettings.findOne().lean()
+        if (!settings) return {}
+        return JSON.parse(JSON.stringify(settings))
+    } catch (error) {
+        console.error("Failed to fetch contact settings:", error);
+        return {}
+    }
 }
 
 export async function ContactInfo() {
@@ -19,7 +25,7 @@ export async function ContactInfo() {
                     <InfoCard
                         icon={<MapPin className="h-6 w-6" />}
                         title="Office"
-                        content={'18, HariramGoenka Street, Burabuzar, Kolkata, India. Pin code - 700007'}
+                        content={settings?.address || '18, HariramGoenka Street, Burabuzar, Kolkata, India. Pin code - 700007'}
                         action="Get Directions"
                         href="#"
                     />
@@ -33,16 +39,16 @@ export async function ContactInfo() {
                     <InfoCard
                         icon={<Phone className="h-6 w-6" />}
                         title="Phone"
-                        content={'+91 8981420463'}
+                        content={settings?.phone || '+91 8981420463'}
                         action="Call Now"
-                        href={'tel:+918981420463'}
+                        href={`tel:${settings?.phone || '+918981420463'}`}
                     />
                     <InfoCard
                         icon={<Mail className="h-6 w-6" />}
                         title="Email"
-                        content={'chhandajewellers@gmail.com'}
+                        content={settings?.email || 'chhandajewellers@gmail.com'}
                         action="Send Email"
-                        href={'mailto:chhandajewellers@gmail.com'}
+                        href={`mailto:${settings?.email || 'chhandajewellers@gmail.com'}`}
                     />
                 </div>
             </div>

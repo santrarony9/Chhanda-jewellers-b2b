@@ -280,7 +280,7 @@ export default function SettingsPage() {
                 alert(`Failed to update settings: ${errorData?.message || res.statusText}`)
             }
         } catch (error) {
-            alert("Error updating settings")
+            alert("Error updating settings: " + (error instanceof Error ? error.message : "Unknown error"))
         } finally {
             setSaving(false)
         }

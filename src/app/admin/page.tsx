@@ -15,21 +15,31 @@ import Enquiry from "@/models/Enquiry";
 export const dynamic = 'force-dynamic';
 
 async function getData() {
-    await dbConnect();
+    try {
+        await dbConnect();
 
-    const productCount = await Product.countDocuments({});
-    const enquiryCount = await Enquiry.countDocuments({});
-    const pendingEnquiries = await Enquiry.countDocuments({ status: 'new' });
+        const productCount = await Product.countDocuments({});
+        const enquiryCount = await Enquiry.countDocuments({});
+        const pendingEnquiries = await Enquiry.countDocuments({ status: 'new' });
 
-    // perform a simple recent enquiry fetch
-    const recentEnquiries = await Enquiry.find().sort({ createdAt: -1 }).limit(5).lean();
+        // perform a simple recent enquiry fetch
+        const recentEnquiries = await Enquiry.find().sort({ createdAt: -1 }).limit(5).lean();
 
-    return {
-        productCount,
-        enquiryCount,
-        pendingEnquiries,
-        recentEnquiries: JSON.parse(JSON.stringify(recentEnquiries)), // Serialize MongoDB objects
-    };
+        return {
+            productCount,
+            enquiryCount,
+            pendingEnquiries,
+            recentEnquiries: JSON.parse(JSON.stringify(recentEnquiries)), // Serialize MongoDB objects
+        };
+    } catch (e) {
+        console.error("Failed to fetch admin data:", e);
+        return {
+            productCount: 0,
+            enquiryCount: 0,
+            pendingEnquiries: 0,
+            recentEnquiries: [],
+        };
+    }
 }
 
 export default async function AdminDashboard() {

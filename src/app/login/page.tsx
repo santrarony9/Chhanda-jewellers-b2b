@@ -38,6 +38,7 @@ export default function LoginPage() {
                 router.refresh();
             }
         } catch (err) {
+            console.error(err);
             setError('An error occurred. Please try again.');
             setLoading(false);
         }

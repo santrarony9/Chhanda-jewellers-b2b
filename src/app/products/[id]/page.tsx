@@ -5,7 +5,6 @@ import Link from "next/link"
 import { Check, Download, ArrowLeft, AlertCircle } from "lucide-react"
 import dbConnect from "@/lib/db"
 import Product from "@/models/Product"
-import { notFound } from "next/navigation"
 import { formatWeight } from "@/lib/utils"
 
 // Helper to get product
@@ -16,6 +15,7 @@ async function getProduct(id: string) {
         if (!product) return null;
         return JSON.parse(JSON.stringify(product)); // Serialize
     } catch (e) {
+        console.error("Failed to fetch product:", e);
         return null;
     }
 }

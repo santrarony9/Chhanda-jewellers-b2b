@@ -4,9 +4,15 @@ import dbConnect from "@/lib/db"
 import SiteSettings from "@/models/SiteSettings"
 
 async function getSettings() {
-    await dbConnect()
-    const settings = await SiteSettings.findOne()
-    return settings || {}
+    try {
+        await dbConnect()
+        const settings = await SiteSettings.findOne().lean()
+        if (!settings) return {}
+        return JSON.parse(JSON.stringify(settings))
+    } catch (error) {
+        console.error("Failed to fetch footer settings:", error);
+        return {}
+    }
 }
 
 export async function Footer() {

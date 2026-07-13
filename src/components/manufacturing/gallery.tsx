@@ -1,6 +1,5 @@
 "use client"
 
-import { Card } from "@/components/ui/card"
 import { motion } from "framer-motion"
 
 // Placeholders for now - normally these would be real shots from the factory

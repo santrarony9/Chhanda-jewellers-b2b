@@ -2,8 +2,7 @@
 
 import { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
-import { Upload, X, Image as ImageIcon } from "lucide-react"
-import Image from "next/image"
+import { Upload, X } from "lucide-react"
 
 import { compressImage } from "@/lib/utils"
 
