@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
-
+import Image from "next/image"
 import { ArrowRight, Star } from "lucide-react"
 
 interface HeroProps {
@@ -121,18 +121,16 @@ export function Hero({ heroImage }: HeroProps) {
                             style={{ y: yRange }} // Parallax effect
                             className="absolute top-10 right-0 w-full h-full"
                         >
-                            <div className="relative w-full h-full overflow-hidden rounded-2xl shadow-[0_0_40px_rgba(212,175,55,0.15)]">
-                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-20" />
-                                <div className="absolute top-1/2 left-1/2 w-[150%] h-[150%] lg:w-[200%] lg:h-[200%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
-                                    <iframe
-                                        src="https://www.youtube.com/embed/KJ64wNBC8Ug?autoplay=1&mute=1&loop=1&playlist=KJ64wNBC8Ug&controls=0&showinfo=0&rel=0&modestbranding=1&vq=hd1080"
-                                        title="Chhanda Jewellers"
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                        className="w-full h-full"
-                                    ></iframe>
-                                </div>
+                            <div className="relative w-full h-full">
+                                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
+                                <Image
+                                    src={heroImage || "/hero-jewellery-v3.png"}
+                                    alt="Exquisite Diamond Jewellery"
+                                    fill
+                                    className="object-contain drop-shadow-2xl"
+                                    sizes="(max-width: 1200px) 100vw, 50vw"
+                                    priority
+                                />
                             </div>
                         </motion.div>
 

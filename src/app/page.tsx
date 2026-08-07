@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { Hero } from "@/components/home/hero"
 import { TrustBadges } from "@/components/home/trust-badges"
+import { VideoSection } from "@/components/home/video-section"
 import { FeaturedCategories } from "@/components/home/featured-categories"
 import { ManufacturingHighlight } from "@/components/home/manufacturing-highlight"
 import { BulkEnquiryCTA } from "@/components/home/bulk-enquiry-cta"
@@ -36,6 +37,7 @@ export default async function Home() {
       <Navbar />
       <Hero heroImage={heroImage} />
       <TrustBadges />
+      <VideoSection />
       <FeaturedCategories categories={categories} />
       <ManufacturingHighlight data={manufacturingHighlight} />
       <BulkEnquiryCTA />
