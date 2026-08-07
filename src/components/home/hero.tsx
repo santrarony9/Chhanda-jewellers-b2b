@@ -113,7 +113,7 @@ export function Hero({ heroImage }: HeroProps) {
 
                     {/* Right Visual */}
                     {/* Right Visual */}
-                    <div className="relative hidden lg:block h-[700px] w-full">
+                    <div className="relative h-[350px] lg:h-[700px] w-full mt-8 lg:mt-0 order-first lg:order-last mb-8 lg:mb-0">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 50 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
