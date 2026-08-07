@@ -123,14 +123,16 @@ export function Hero({ heroImage }: HeroProps) {
                         >
                             <div className="relative w-full h-full">
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-                                <Image
-                                    src={heroImage || "/hero-jewellery-v3.png"}
-                                    alt="Exquisite Diamond Jewellery"
-                                    fill
-                                    className="object-contain drop-shadow-2xl"
-                                    sizes="(max-width: 1200px) 100vw, 50vw"
-                                    priority
-                                />
+                                <video
+                                    src="/hero-video.mp4"
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="object-cover w-full h-full rounded-2xl shadow-[0_0_40px_rgba(212,175,55,0.15)]"
+                                >
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                         </motion.div>
 
