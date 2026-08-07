@@ -54,12 +54,12 @@ export function FeaturedCategories({ categories = defaultCategories }: FeaturedC
     const displayCategories = categories && categories.length > 0 ? categories : defaultCategories;
 
     return (
-        <section className="py-32 bg-background relative overflow-hidden">
+        <section className="py-16 md:py-32 bg-background relative overflow-hidden">
             {/* Decorative Elements */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-500/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3" />
 
             <div className="container mx-auto px-4">
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-16 gap-6">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -75,7 +75,7 @@ export function FeaturedCategories({ categories = defaultCategories }: FeaturedC
                             </motion.div>
                             <span className="text-primary-300 text-xs font-bold tracking-[0.3em] uppercase">Collections</span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-serif text-white leading-tight">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white leading-tight">
                             Curated <span className="text-white/40 italic font-light">Excellence</span>
                         </h2>
                     </motion.div>
@@ -88,7 +88,7 @@ export function FeaturedCategories({ categories = defaultCategories }: FeaturedC
                     {displayCategories.map((cat, index) => (
                         <motion.div
                             key={index}
-                            className={`${cat.colSpan} h-[450px] group relative overflow-hidden border border-white/5 bg-surface-dark backdrop-blur-sm`}
+                            className={`${cat.colSpan} h-[300px] md:h-[450px] group relative overflow-hidden border border-white/5 bg-surface-dark backdrop-blur-sm`}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: cat.delay, duration: 0.8, ease: "easeOut" }}
@@ -115,7 +115,7 @@ export function FeaturedCategories({ categories = defaultCategories }: FeaturedC
                                 </div>
 
                                 <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700 ease-out">
-                                    <h3 className="text-3xl font-serif text-white mb-3 group-hover:text-primary transition-colors duration-300 drop-shadow-lg">{cat.title}</h3>
+                                    <h3 className="text-xl md:text-3xl font-serif text-white mb-3 group-hover:text-primary transition-colors duration-300 drop-shadow-lg">{cat.title}</h3>
                                     <div className="h-[1px] w-12 bg-primary/50 mb-3 group-hover:w-24 transition-all duration-700 ease-out" />
                                     <p className="text-gray-300 text-sm tracking-widest uppercase font-medium group-hover:text-white transition-colors duration-300">{cat.subtitle}</p>
                                 </div>

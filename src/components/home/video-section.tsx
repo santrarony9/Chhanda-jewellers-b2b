@@ -2,7 +2,7 @@
 
 export function VideoSection() {
     return (
-        <section className="py-12 md:py-20 bg-background relative overflow-hidden">
+        <section className="py-8 md:py-12 lg:py-20 bg-background relative overflow-hidden">
             {/* Ambient Background Glow for Glassmorphism to interact with */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-primary/10 rounded-full blur-[120px] pointer-events-none z-0" />
             

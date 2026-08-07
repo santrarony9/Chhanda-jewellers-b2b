@@ -10,10 +10,10 @@ export function BulkEnquiryCTA() {
             <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
 
             <div className="container relative mx-auto px-4 text-center">
-                <h2 className="text-3xl md:text-5xl font-serif text-black font-bold mb-6">
+                <h2 className="text-2xl md:text-3xl lg:text-5xl font-serif text-black font-bold mb-6">
                     Ready to Scale Your Jewellery Business?
                 </h2>
-                <p className="text-black/80 text-lg max-w-2xl mx-auto mb-10 font-medium">
+                <p className="text-black/80 text-base md:text-lg max-w-2xl mx-auto mb-10 font-medium">
                     Whether you need OEM manufacturing, private labeling, or bulk wholesale supply,
                     Chhanda Jewellers delivers excellence at competitive rates.
                 </p>

@@ -19,10 +19,10 @@ export async function Footer() {
     const settings = await getSettings()
 
     return (
-        <footer className="bg-[#050505] border-t border-surface-light/20 pt-16 pb-8">
+        <footer className="bg-[#050505] border-t border-surface-light/20 pt-10 pb-6 md:pt-16 md:pb-8">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                    <div className="space-y-6">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-10 md:gap-12 md:mb-16">
+                    <div className="col-span-2 lg:col-span-1 space-y-6">
                         <Link href="/" className="flex items-center gap-2">
                             <div className="relative h-10 w-10">
                                 <img
@@ -60,7 +60,7 @@ export async function Footer() {
 
                     <div>
                         <h3 className="text-primary font-serif text-lg mb-6">Quick Links</h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-3 md:space-y-4">
                             <FooterLink href="/about">About Us</FooterLink>
                             <FooterLink href="/manufacturing">Manufacturing Process</FooterLink>
                             <FooterLink href="/b2b">B2B Services</FooterLink>
@@ -71,7 +71,7 @@ export async function Footer() {
 
                     <div>
                         <h3 className="text-primary font-serif text-lg mb-6">Products</h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-3 md:space-y-4">
                             <FooterLink href="/products?cat=Diamond Jewellery">Diamond Jewellery (18K, 14K, 9K)</FooterLink>
                             <FooterLink href="/products?cat=Bridal">Gift Collection</FooterLink>
                             <FooterLink href="/products?cat=Lightweight">Lightweight Daily Wear</FooterLink>
@@ -79,9 +79,9 @@ export async function Footer() {
                         </ul>
                     </div>
 
-                    <div>
+                    <div className="col-span-2 lg:col-span-1">
                         <h3 className="text-primary font-serif text-lg mb-6">Contact Us</h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-3 md:space-y-4">
                             <li className="flex items-start gap-3 text-gray-400 text-sm">
                                 <MapPin className="h-5 w-5 text-primary shrink-0" />
                                 <span>18, HariramGoenka Street, Burabuzar, Kolkata, India. Pin code - 700007</span>

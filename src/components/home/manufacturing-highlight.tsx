@@ -23,12 +23,12 @@ interface ManufacturingHighlightProps {
 
 export function ManufacturingHighlight({ data }: ManufacturingHighlightProps) {
     return (
-        <section className="py-32 bg-surface-dark relative border-t border-white/5">
+        <section className="py-16 md:py-32 bg-surface-dark relative border-t border-white/5">
             <div className="container mx-auto px-4">
-                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+                <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-16 lg:gap-24">
 
                     {/* Visual Side - Dual Leadership */}
-                    <div className="w-full lg:w-1/2 relative order-1 lg:order-1 mt-8 lg:mt-0">
+                    <div className="w-full lg:w-1/2 relative order-2 lg:order-1 mt-8 lg:mt-0">
                         <div className="flex flex-col sm:flex-row gap-6 md:gap-6 w-full">
                             {/* Founder - Chairman */}
                             <div className="relative h-[400px] sm:h-[450px] md:h-[550px] group w-full sm:w-1/2">
@@ -84,12 +84,12 @@ export function ManufacturingHighlight({ data }: ManufacturingHighlightProps) {
                                 <span className="h-[1px] w-8 bg-primary"></span>
                                 The Process
                             </h2>
-                            <h3 className="text-4xl md:text-5xl font-serif text-white mb-8 leading-tight text-balance">
+                            <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-8 leading-tight text-balance">
                                 {data?.heading || "Precision Casting meets"} <br />
                                 <span className="text-gray-500 italic">{data?.subheading || "Bengal's Artistry"}</span>
                             </h3>
 
-                            <p className="text-gray-400 text-lg mb-10 leading-relaxed font-light">
+                            <p className="text-gray-400 text-base md:text-lg mb-10 leading-relaxed font-light">
                                 {data?.description || "Our Singur facility is equipped with advanced Vacuum Casting technology and Laser Soldering units. Yet, we believe the soul of jewellery lies in the hands of the artisan. We combine automation with unmatched hand-finishing."}
                             </p>
 

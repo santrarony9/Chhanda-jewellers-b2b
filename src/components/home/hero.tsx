@@ -15,7 +15,7 @@ export function Hero({ heroImage }: HeroProps) {
     const yRange = useTransform(scrollY, [0, 500], [0, 100]);
 
     return (
-        <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
+        <section className="relative min-h-[70vh] md:min-h-[90vh] flex items-center overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
             {/* Background Layers */}
             <div className="absolute inset-0 bg-background z-0" />
             <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03] z-0" />
@@ -48,7 +48,7 @@ export function Hero({ heroImage }: HeroProps) {
                         </div>
 
                         <motion.h1
-                            className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-[1.1] mb-8"
+                            className="text-3xl md:text-5xl lg:text-7xl xl:text-8xl font-serif font-bold text-white leading-[1.1] mb-8"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.3 }}
@@ -77,12 +77,12 @@ export function Hero({ heroImage }: HeroProps) {
                             </span>
                         </motion.h1>
 
-                        <p className="text-gray-400 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-light border-l-2 border-primary/20 pl-6">
+                        <p className="text-gray-400 text-base md:text-lg lg:text-xl max-w-xl mb-10 leading-relaxed font-light border-l-2 border-primary/20 pl-6">
                             Chhanda Jewellers defines the standard of B2B jewellery manufacturing.
                             We blend traditional artistry with modern precision to deliver exquisitely finished Hallmark jewellery.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row gap-6">
+                        <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
                             <Button className="h-14 px-8 rounded-none border border-primary/50 bg-primary/10 text-primary hover:bg-primary hover:text-black hover:border-primary transition-all duration-500 uppercase tracking-wider text-sm font-semibold group">
                                 <Link href="/contact" className="flex items-center gap-2">
                                     Start Partnership
@@ -95,17 +95,17 @@ export function Hero({ heroImage }: HeroProps) {
                         </div>
 
                         {/* Stats */}
-                        <div className="mt-16 grid grid-cols-3 gap-8 border-t border-white/5 pt-8">
+                        <div className="mt-10 md:mt-16 grid grid-cols-3 gap-4 md:gap-8 border-t border-white/5 pt-8">
                             <div>
-                                <h3 className="text-3xl font-serif text-white mb-1">25+</h3>
+                                <h3 className="text-2xl md:text-3xl font-serif text-white mb-1">25+</h3>
                                 <p className="text-xs text-gray-500 uppercase tracking-widest">Years Experience</p>
                             </div>
                             <div>
-                                <h3 className="text-3xl font-serif text-white mb-1">10k+</h3>
+                                <h3 className="text-2xl md:text-3xl font-serif text-white mb-1">10k+</h3>
                                 <p className="text-xs text-gray-500 uppercase tracking-widest">Designs Created</p>
                             </div>
                             <div>
-                                <h3 className="text-3xl font-serif text-white mb-1">100%</h3>
+                                <h3 className="text-2xl md:text-3xl font-serif text-white mb-1">100%</h3>
                                 <p className="text-xs text-gray-500 uppercase tracking-widest">Hallmark Purity</p>
                             </div>
                         </div>
@@ -113,7 +113,7 @@ export function Hero({ heroImage }: HeroProps) {
 
                     {/* Right Visual */}
                     {/* Right Visual */}
-                    <div className="relative h-[350px] lg:h-[700px] w-full mt-8 lg:mt-0 order-first lg:order-last mb-8 lg:mb-0">
+                    <div className="relative h-[350px] lg:h-[700px] w-full mt-8 lg:mt-0 hidden lg:block mb-8 lg:mb-0">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.9, y: 50 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -144,7 +144,7 @@ export function Hero({ heroImage }: HeroProps) {
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}
                                 transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                                className="bg-black/80 backdrop-blur-md border border-primary/30 p-6 max-w-[200px] shadow-2xl shadow-primary/10"
+                                className="bg-black/80 backdrop-blur-md border border-primary/30 p-4 md:p-6 max-w-[200px] shadow-2xl shadow-primary/10"
                             >
                                 <div className="flex gap-1 mb-2">
                                     {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 text-primary fill-primary" />)}
