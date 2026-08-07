@@ -139,7 +139,7 @@ export function Hero({ heroImage }: HeroProps) {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 1, duration: 0.8 }}
-                            className="absolute -left-12 top-1/3 z-20"
+                            className="absolute left-4 md:-left-12 bottom-4 md:bottom-auto md:top-1/3 z-20"
                         >
                             <motion.div
                                 animate={{ y: [0, -10, 0] }}

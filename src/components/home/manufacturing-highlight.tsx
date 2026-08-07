@@ -33,9 +33,9 @@ export function ManufacturingHighlight({ data }: ManufacturingHighlightProps) {
                             {/* Founder - Chairman */}
                             <motion.div
                                 className="flex-1 relative h-[400px] sm:h-[450px] md:h-[550px] group w-full"
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
+                                initial={{ opacity: 1 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.6 }}
                             >
                                 <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden rounded-xl md:rounded-none">
@@ -60,9 +60,9 @@ export function ManufacturingHighlight({ data }: ManufacturingHighlightProps) {
                             {/* Son - Managing Director */}
                             <motion.div
                                 className="flex-1 relative h-[400px] sm:h-[450px] md:h-[550px] group w-full"
-                                initial={{ opacity: 0, x: 30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true }}
+                                initial={{ opacity: 1 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
                             >
                                 <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden rounded-xl md:rounded-none">
