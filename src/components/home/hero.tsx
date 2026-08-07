@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { motion, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
-import Image from "next/image"
+
 import { ArrowRight, Star } from "lucide-react"
 
 interface HeroProps {
@@ -123,16 +123,14 @@ export function Hero({ heroImage }: HeroProps) {
                         >
                             <div className="relative w-full h-full">
                                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-                                <video
-                                    src="/hero-video.mp4"
-                                    autoPlay
-                                    loop
-                                    muted
-                                    playsInline
-                                    className="object-cover w-full h-full rounded-2xl shadow-[0_0_40px_rgba(212,175,55,0.15)]"
-                                >
-                                    Your browser does not support the video tag.
-                                </video>
+                                <iframe
+                                    src="https://www.youtube.com/embed/KJ64wNBC8Ug?autoplay=1&mute=1&loop=1&playlist=KJ64wNBC8Ug&controls=0&showinfo=0&modestbranding=1&vq=hd1080"
+                                    title="Chhanda Jewellers"
+                                    frameBorder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    className="object-cover w-full h-full rounded-2xl shadow-[0_0_40px_rgba(212,175,55,0.15)] pointer-events-none scale-150"
+                                ></iframe>
                             </div>
                         </motion.div>
 
