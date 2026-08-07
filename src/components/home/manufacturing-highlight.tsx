@@ -29,15 +29,9 @@ export function ManufacturingHighlight({ data }: ManufacturingHighlightProps) {
 
                     {/* Visual Side - Dual Leadership */}
                     <div className="w-full lg:w-1/2 relative order-1 lg:order-1 mt-8 lg:mt-0">
-                        <div className="flex flex-col sm:flex-row gap-6 md:gap-6">
+                        <div className="flex flex-col sm:flex-row gap-6 md:gap-6 w-full">
                             {/* Founder - Chairman */}
-                            <motion.div
-                                className="flex-1 relative h-[400px] sm:h-[450px] md:h-[550px] group w-full"
-                                initial={{ opacity: 1 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.6 }}
-                            >
+                            <div className="relative h-[400px] sm:h-[450px] md:h-[550px] group w-full sm:w-1/2">
                                 <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden rounded-xl md:rounded-none">
                                     <img
                                         src={data?.founderImage || "/founder.jpg"}
@@ -55,16 +49,10 @@ export function ManufacturingHighlight({ data }: ManufacturingHighlightProps) {
                                 </div>
                                 {/* Decorative Frame */}
                                 <div className="hidden md:block absolute -inset-3 border border-primary/20 -z-10 translate-x-3 translate-y-3" />
-                            </motion.div>
+                            </div>
 
                             {/* Son - Managing Director */}
-                            <motion.div
-                                className="flex-1 relative h-[400px] sm:h-[450px] md:h-[550px] group w-full"
-                                initial={{ opacity: 1 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.6, delay: 0.2 }}
-                            >
+                            <div className="relative h-[400px] sm:h-[450px] md:h-[550px] group w-full sm:w-1/2">
                                 <div className="absolute inset-0 bg-zinc-900 border border-white/5 overflow-hidden rounded-xl md:rounded-none">
                                     <img
                                         src={data?.mdImage || "/rabi-shankar.jpg"}
@@ -81,7 +69,7 @@ export function ManufacturingHighlight({ data }: ManufacturingHighlightProps) {
                                 </div>
                                 {/* Decorative Frame */}
                                 <div className="hidden md:block absolute -inset-3 border border-primary/20 -z-10 -translate-x-3 translate-y-3" />
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
 
